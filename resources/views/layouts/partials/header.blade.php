@@ -8,10 +8,11 @@
 								<ul class="menu-nav">
 									<li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here" data-menu-toggle="click" aria-haspopup="true">
 										<a href="javascript:;" class="menu-link menu-toggle">
-											<span class="menu-text">Dashboard</span>
-											<i class="menu-arrow"></i>
+											<span class="menu-text" onclick="window.location.href='/dashboard'" style="cursor:pointer;">Dashboard</span>
+
+											<!-- <i class="menu-arrow"></i> -->
 										</a>
-										<div class="menu-submenu menu-submenu-classic menu-submenu-left">
+										<!-- <div class="menu-submenu menu-submenu-classic menu-submenu-left">
 											<ul class="menu-subnav">
 												<li class="menu-item menu-item-active" aria-haspopup="true">
 													<a href="index.html" class="menu-link">
@@ -26,7 +27,7 @@
 													</a>
 												</li>
 											</ul>
-										</div>
+										</div> -->
 									</li>
 									<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
 										<a href="javascript:;" class="menu-link menu-toggle">
@@ -2606,19 +2607,19 @@
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
-																<a href="custom/pages/pricing/pricing-2.html" class="menu-link">
+																<a href="{{URL('category')}}" class="menu-link">
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">Pricing Tables 2</span>
+																	<span class="menu-text">Category</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
-																<a href="custom/pages/pricing/pricing-3.html" class="menu-link">
+																<a href="{{URL('item')}}" class="menu-link">
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">Pricing Tables 3</span>
+																	<span class="menu-text">Items</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
@@ -2633,16 +2634,16 @@
 													</li>
 													<li class="menu-item">
 														<h3 class="menu-heading menu-toggle">
-															<span class="menu-text">Wizards</span>
+															<span class="menu-text">Shops</span>
 															<i class="menu-arrow"></i>
 														</h3>
 														<ul class="menu-inner">
 															<li class="menu-item" aria-haspopup="true">
-																<a href="custom/pages/wizard/wizard-1.html" class="menu-link">
+																<a href="{{URL('shop')}}" class="menu-link">
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">Wizard 1</span>
+																	<span class="menu-text">Shop Registration</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">

@@ -20,8 +20,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/hsnlist', [HomeController::class, 'hsnlist'])->name('hsnlist');
     Route::post('/createhsn', [HomeController::class, 'createhsn'])->name('createhsn');
-
-
+    Route::get('/category', [HomeController::class, 'categorylist']);
+    Route::post('/createcategory', [HomeController::class, 'createcategory'])->name('createcategory');
+    Route::get('/item', [HomeController::class, 'itemlist'])->name('item.list');
+    Route::post('/item', [HomeController::class, 'createitem'])->name('item.create');
+    Route::get('/shop', [HomeController::class, 'shoplist'])->name('shop.list');
+    Route::post('/shop', [HomeController::class, 'createshop'])->name('shop.create');
+    
 
 
     

@@ -255,8 +255,8 @@
 													<div class="card-body d-flex">
 														<div class="d-flex py-5 flex-column align-items-start flex-grow-1">
 															<div class="flex-grow-1">
-																<a href="#" class="text-white font-weight-bolder font-size-h3">Create CRM Reports</a>
-																<p class="text-white opacity-75 font-weight-bold mt-3">Outlines keep you and honest indulging honest.</p>
+																<a href="#" class="text-white font-weight-bolder font-size-h3">Franchises Registration</a>
+																<p class="text-white opacity-75 font-weight-bold mt-3">Your QSR Partner Revolutionizing Quick Service Restaurants</p>
 															</div>
 															<a href='#' class="btn btn-link btn-link-white font-weight-bold">Read More
 															<span class="svg-icon svg-icon-lg svg-icon-white">
