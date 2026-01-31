@@ -7,6 +7,7 @@ use App\Models\Hsns;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Shop_registrations;
+use App\Models\Menus;
 use Auth;
 use DB;
 
@@ -106,6 +107,33 @@ public function createitem(Request $request){
        $shop->aadhar_card  = $request->aadhar_card;
        $shop->pancard  = $request->pancard;
        $shop->save();
+
+       return redirect()->back()->with('success', 'Data created successfully!');
+   } catch (\Exception $e) {
+      return redirect()->back()->with('error', $e->getMessage());
+
+   }
+    
+
+}
+public function menulist(){
+    $menus = Menus::all();                     
+    $shops = Shop_registrations::all();        
+    $items = Item::all();                     
+
+    return view('menus', compact('menus', 'shops', 'items'));
+}
+
+    public function createmenus(Request $request){
+
+
+   try {
+       
+       $menus = new Menus();
+       $menus->create_menu    = $request->create_menu;
+       $menus->shop_id        = $request->shop_id;
+       $menus->item_id = $request->item_id;
+       $menus->save();
 
        return redirect()->back()->with('success', 'Data created successfully!');
    } catch (\Exception $e) {

@@ -2647,11 +2647,11 @@
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
-																<a href="custom/pages/wizard/wizard-2.html" class="menu-link">
+																<a href="{{URL('menus')}}" class="menu-link">
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">Wizard 2</span>
+																	<span class="menu-text">Menu</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">

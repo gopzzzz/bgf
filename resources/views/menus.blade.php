@@ -222,106 +222,48 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Shop Registration</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Menus</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
-                   <form method="POST" action="{{ route('shop.create') }}" enctype="multipart/form-data">
+                   <form method="POST" action="{{ route('menu.create') }}" enctype="multipart/form-data">
 
 
                                                 @csrf
                
-                                                  <div class="form-group">
-														<label>Name
+            <div class="form-group">
+														<label>Create Menu
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="name" placeholder="Enter name" required />
+														<input type="text" class="form-control" name="create_menu" placeholder="create menu" required />
 														
-													</div>
-
-                                                      <div class="form-group">
-														<label>Email
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="email" placeholder="Enter Email" required />
-														
-													</div>
-
-
-                                                     <div class="form-group">
-														<label>Address
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="address" placeholder="Enter address" required />
-														
-													</div>
-
-                                                     <div class="form-group">
-														<label>Phone Number
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="phone_number" placeholder="Enter Number" required />
-														
-													</div>
-
-                                                     <div class="form-group">
-														<label>District
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="district" placeholder="Enter district" required />
-														
-													</div>
+													
 
                                                     <div class="form-group">
-														<label>State
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="state" placeholder="Enter state" required />
+                                                        <label>
+                                                            Shops <span class="text-danger">*</span>
+                                                        </label>
 
-                                                    </div>
+                                                       <select class="form-control" name="shop_id" required>
+                                                            <option value="">Select Shop</option>
+                                                            @foreach($shops as $shop)
+                                                       <option value="{{ $shop->id }}">
+                                                       {{ $shop->name }}
+                                                         </option>
+                                                        @endforeach
+                                                       </select>
+                                                       </div>
 
-                                                    <div class="form-group">
-														<label>GST Number
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="gst_number" placeholder="Enter GST" required />
+                                                    <select class="form-control" name="item_id" required>
+                                                            <option value="">Select Item</option>
+                                                            @foreach($items as $item)
+                                                       <option value="{{ $item->id }}">
+                                                       {{ $item->item_name }}
+                                                        </option>
+                                                        @endforeach
+                                                        </select>
 
-                                                    </div>
-
-                                                    
-                                                    <div class="form-group">
-														<label>FFSSAI
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="ffssai" placeholder="Enter FFSSAI" required />
-
-                                                    </div>
-
-                                                   <div class="form-group">
-														<label>Municipality License
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="municipality_license" placeholder="Enter License" required />
-
-                                                    </div>
-
-                                                      <div class="form-group">
-														<label>Shop Owner Name
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="shop_owner_name" placeholder="Enter owner name" required />
-
-                                                    </div>
-
-                                                    <div class="form-group">
-														<label>Aadhar card
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="aadhar_card" placeholder="Enter Aadhar" required />
-
-                                                    </div>
-
-                                                    <div class="form-group">
-														<label>Pancard
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="pancard" placeholder="Enter pancard" required />
-
-                                                    </div>
-
-
-
-                                                      
 
 
             </div>
@@ -395,39 +337,23 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Address</th>
-      <th scope="col">Phone Number</th>
-      <th scope="col">District</th>
-      <th scope="col">State</th>
-      <th scope="col">GST Number</th>
-      <th scope="col">FFSSAI</th>
-      <th scope="col">Municipality License</th>
-      <th scope="col">Shop Owner Name</th>
-      <th scope="col">Aadhar card</th>
-      <th scope="col">pancard</th>
+      <th scope="col">Create menu</th>
+      <th scope="col">Shop</th>
+      <th scope="col">Item</th>
+      
     </tr>
   </thead>
   <tbody>
     @php 
      $i=1;
     @endphp
-    @foreach($shop as $key)
+    @foreach($menus as $key)
     <tr>
       <th scope="row">{{$i}}</th>
-      <td>{{$key->name}}</td>
-      <td>{{$key->email}}</td>
-      <td>{{$key->address}}</td>
-      <td>{{$key->phone_number}}</td>
-      <td>{{$key->district}}</td>
-      <td>{{$key->state}}</td>
-      <td>{{$key->gst_number}}</td>
-      <td>{{$key->ffssai}}</td>
-      <td>{{$key->municipality_license}}</td>
-      <td>{{$key->shop_owner_name}}</td>
-      <td>{{$key->aadhar_card}}</td>
-      <td>{{$key->pancard}}</td>
+      <td>{{$key->create_menu}}</td>
+      <td>{{$key->shop_id}}</td>
+      <td>{{$key->item_id}}</td>
+     
       
     </tr>
 

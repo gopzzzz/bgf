@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/item', [HomeController::class, 'createitem'])->name('item.create');
     Route::get('/shop', [HomeController::class, 'shoplist'])->name('shop.list');
     Route::post('/shop', [HomeController::class, 'createshop'])->name('shop.create');
+     Route::get('/menus', [HomeController::class, 'menulist'])->name('menu.list');
+    Route::post('/menus', [HomeController::class, 'createmenus'])->name('menu.create');
     
 
 
