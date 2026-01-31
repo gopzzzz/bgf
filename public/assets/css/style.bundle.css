@@ -21336,7 +21336,7 @@ a.text-white:hover, a.text-white:focus {
 .flex-center {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  /* justify-content: center; */
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center; }
@@ -60310,7 +60310,7 @@ html {
 
 html,
 body {
-  height: 100%;
+  /* height: 100%; */
   margin: 0px;
   padding: 0px;
   font-size: 13px !important;
