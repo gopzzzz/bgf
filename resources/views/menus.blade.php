@@ -3,7 +3,8 @@
 @section('content')
 
 
-<div class="d-flex flex-row flex-column-fluid container">
+<div class="d-flex flex-row flex-column-fluid">
+    <div class="container">
 						<!--begin::Content Wrapper-->
 						<div class="main d-flex flex-column flex-row-fluid">
 							<!--begin::Subheader-->
@@ -378,6 +379,8 @@
 						</div>
 						<!--begin::Content Wrapper-->
 					</div>
+                </div> <!-- end container -->
+            </div> <!-- end flex-row -->
 
 
 @endsection
