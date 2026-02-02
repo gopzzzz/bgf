@@ -143,4 +143,30 @@ public function menulist(){
     
 
 }
+
+public function hsnfetch(Request $request){
+ $id=$request->id;
+   $apps=Hsns::find($id);
+  print_r(json_encode($apps));
+}
+
+public function edithsn(Request $request){
+
+      try {
+        $id=$request->keyid;
+        $hsn =Hsns::find($id);
+        $hsn->hsncode = $request->hsncode;
+        $hsn->gst     = $request->tax;
+        $hsn->igst    = $request->igst;
+        $hsn->cgst    = $request->cgst;
+        $hsn->save();
+
+        return redirect()->back()
+            ->with('success', 'Data Edited successfully!');
+    } catch (Exception $e) {
+        return redirect()->back()
+            ->with('error', 'Something went wrong. Please try again.');
+    }
+}
+
 }

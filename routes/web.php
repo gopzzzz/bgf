@@ -27,10 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/shop', [HomeController::class, 'shoplist'])->name('shop.list');
     Route::post('/shop', [HomeController::class, 'createshop'])->name('shop.create');
      Route::get('/menus', [HomeController::class, 'menulist'])->name('menu.list');
-    Route::post('/menus', [HomeController::class, 'createmenus'])->name('menu.create');
+    Route::post('/hsnfetch', [HomeController::class, 'hsnfetch'])->name('hsnfetch');
+       Route::post('/edithsn', [HomeController::class, 'edithsn'])->name('edithsn');
+
     
-
-
+    
     
     });
 

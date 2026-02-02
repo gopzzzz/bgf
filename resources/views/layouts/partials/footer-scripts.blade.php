@@ -14,4 +14,33 @@
 		<!--end::Page Vendors-->
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="{{asset('assets/js/pages/widgets.js')}}"></script>
+
+	
 		<!--end::Page Scripts-->
+
+<script>
+    $(document).on('click', '.edithsn', function () {
+        var id = $(this).attr('data-id'); // 🔥 safest
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('hsnfetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#hsncode').val(obj.hsncode);
+		  $('#tax').val(obj.gst); 
+          $('#igst').val(obj.igst);
+          $('#cgst').val(obj.cgst);
+		  $('#keyid').val(id);
+					},
+					});	
+		}
+        $('#editmodal').modal('show');
+    });
+</script>
+

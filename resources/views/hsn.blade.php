@@ -261,10 +261,11 @@
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
             </div>
+			</form>
         </div>
     </div>
 </div>
-</form>
+
 
                                             
 											<!--end::Button-->
@@ -330,6 +331,7 @@
       <th scope="col">TAX %</th>
       <th scope="col">IGST</th>
        <th scope="col">CGST</th>
+	   <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -343,6 +345,7 @@
       <td>{{$key->gst}}</td>
       <td>{{$key->igst}}</td>
       <td>{{$key->cgst}}</td>
+	    <td>  <button type="button" class="btn btn-sm btn-primary edithsn" data-id="{{$key->id}}">Edit</button></td>
       
     </tr>
 
@@ -356,6 +359,62 @@
     
   </tbody>
 </table>
+
+
+                                            <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">HSN CREATION</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                   <form method="POST" action="{{url('edithsn')}}" enctype="multipart/form-data" name="crmedit">
+
+                                                @csrf
+               
+            <div class="form-group">
+														<label>HSN CODE
+														<span class="text-danger">*</span></label>
+														<input type="hidden" id="keyid" name="keyid">
+														<input type="text" class="form-control" id="hsncode" name="hsncode" placeholder="Enter hsn code" required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>TAX %
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="tax" name="tax" placeholder="Enter Tax " required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>IGST
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="igst" name="igst" placeholder="Enter IGST" required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>CGST
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="cgst" name="cgst" placeholder="Enter CGST" required />
+														
+													</div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
+            </div>
+			</form>
+        </div>
+    </div>
+</div>
+
 
                                         
 										<!--end: Datatable-->
