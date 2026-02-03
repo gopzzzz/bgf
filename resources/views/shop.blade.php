@@ -222,7 +222,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Shop Registration</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Shop Entries</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -407,6 +407,7 @@
       <th scope="col">Shop Owner Name</th>
       <th scope="col">Aadhar card</th>
       <th scope="col">pancard</th>
+	  <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -428,7 +429,7 @@
       <td>{{$key->shop_owner_name}}</td>
       <td>{{$key->aadhar_card}}</td>
       <td>{{$key->pancard}}</td>
-      
+       <td>  <button type="button" class="btn btn-sm btn-primary editshop" data-id="{{$key->id}}">Edit</button></td>
     </tr>
 
      @php 
@@ -441,6 +442,120 @@
     
   </tbody>
 </table>
+                       <div class="modal fade" id="edit_shop_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Shop Entries</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                   <form method="POST" action="{{url('editshop')}}" enctype="multipart/form-data" name="crmedit">
+
+                                                @csrf
+               
+                                     <div class="form-group">
+														<label>Name
+														<span class="text-danger">*</span></label>
+														<input type="hidden" id="shop_keyid" name="keyid">
+														<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required />
+														
+													</div>
+
+												<div class="form-group">
+														<label>Email
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" required />
+														
+													</div>
+
+
+                                                     <div class="form-group">
+														<label>Address
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>Phone Number
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Number" required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>District
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="district" name="district" placeholder="Enter district" required />
+														
+													</div>
+
+                                                    <div class="form-group">
+														<label>State
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="state" name="state" placeholder="Enter state" required />
+
+                                                    </div>
+
+                                                    <div class="form-group">
+														<label>GST Number
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="gst_number" name="gst_number" placeholder="Enter GST" required />
+
+                                                    </div>
+
+                                                    
+                                                    <div class="form-group">
+														<label>FFSSAI
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="ffssai" name="ffssai" placeholder="Enter FFSSAI" required />
+
+                                                    </div>
+
+                                                   <div class="form-group">
+														<label>Municipality License
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="municipality_license" name="municipality_license" placeholder="Enter License" required />
+
+                                                    </div>
+
+                                                      <div class="form-group">
+														<label>Shop Owner Name
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="shop_owner_name" name="shop_owner_name" placeholder="Enter owner name" required />
+
+                                                    </div>
+
+                                                    <div class="form-group">
+														<label>Aadhar card
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="aadhar_card" name="aadhar_card" placeholder="Enter Aadhar" required />
+
+                                                    </div>
+
+                                                    <div class="form-group">
+														<label>Pancard
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="pancard" name="pancard" placeholder="Enter pancard" required />
+
+                                                    </div>
+
+                                                     
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
+            </div>
+			</form>
+        </div>
+    </div>
+</div>
+
 
                                         
 										<!--end: Datatable-->

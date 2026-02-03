@@ -2643,7 +2643,7 @@
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">Shop Registration</span>
+																	<span class="menu-text">Shop Entries</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
@@ -2655,11 +2655,11 @@
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
-																<a href="custom/pages/wizard/wizard-3.html" class="menu-link">
+																<a href="{{URL('staff_creation')}}" class="menu-link">
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">Wizard 3</span>
+																	<span class="menu-text">Staff Creation</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">

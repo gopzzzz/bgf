@@ -237,7 +237,7 @@
             <div class="form-group">
 														<label>Create Menu
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="create_menu" placeholder="create menu" required />
+														<input type="text" class="form-control" name="create_menu" placeholder="create menu" required /></div>
 														
 													
 
@@ -255,6 +255,12 @@
                                                         @endforeach
                                                        </select>
                                                        </div>
+
+													   
+                                                    <div class="form-group">
+                                                        <label>
+                                                           Items  <span class="text-danger">*</span>
+                                                        </label>
 
                                                     <select class="form-control" name="item_id" required>
                                                             <option value="">Select Item</option>
@@ -341,6 +347,7 @@
       <th scope="col">Create menu</th>
       <th scope="col">Shop</th>
       <th scope="col">Item</th>
+	  <th scope="col">Action</th>
       
     </tr>
   </thead>
@@ -348,15 +355,16 @@
     @php 
      $i=1;
     @endphp
-    @foreach($menus as $key)
-    <tr>
-      <th scope="row">{{$i}}</th>
-      <td>{{$key->create_menu}}</td>
-      <td>{{$key->shop_id}}</td>
-      <td>{{$key->item_id}}</td>
-     
-      
-    </tr>
+    @foreach($menus as $menu)
+<tr>
+  <th scope="row">{{$i}}</th>
+  <td>{{$menu->create_menu}}</td>
+  <td>{{ $menu->shop->name ?? '-' }}</td>
+<td>{{ $menu->item->item_name ?? '-' }}</td>
+  <td>
+    <button type="button" class="btn btn-sm btn-primary editmenus" data-id="{{$menu->id}}">Edit</button>
+  </td>
+</tr>
 
      @php 
 
@@ -368,6 +376,61 @@
     
   </tbody>
 </table>
+
+      <div class="modal fade" id="edit_menu_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Menus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                   <form method="POST" action="{{url('editmenus')}}" enctype="multipart/form-data" name="crmedit">
+
+                                                @csrf
+               
+                                            <div class="form-group">
+                                                 <label>Create Menu <span class="text-danger">*</span></label>
+                                                 <input type="hidden" id="menu_keyid" name="keyid">
+                                                 <input type="text" class="form-control" id="create_menu" name="create_menu" placeholder="edit menu" required />
+                                            </div>
+
+
+											<div class="form-group">
+												<label>Shops <span class="text-danger">*</span></label>
+												<select class="form-control" id="shop_id" name="shop_id" required>
+													<option value="">Select Shop</option>
+													@foreach($shops as $shop)
+													<option value="{{ $shop->id }}"
+													{{ isset($menu) && $menu->shop_id == $shop->id ? 'selected' : '' }}>{{ $shop->name }}
+												</option>
+												@endforeach
+											</select>
+										</div>
+										
+										<div class="form-group"><label>Items <span class="text-danger">*</span></label>
+										<select class="form-control" id="item_id" name="item_id" required>
+											<option value="">Select Item</option>
+											@foreach($items as $item)
+											<option value="{{ $item->id }}"
+											{{ isset($menu) && $menu->item_id == $item->id ? 'selected' : '' }}>{{ $item->item_name }}
+										</option>
+										@endforeach    
+									</select>
+								</div>
+
+								</div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
+            </div>
+			</form>
+        </div>
+    </div>
+</div>
 
                                         
 										<!--end: Datatable-->

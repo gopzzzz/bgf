@@ -262,19 +262,20 @@
 													</div>
 
                                                     <div class="form-group">
-                                                        <label>
-                                                            Category <span class="text-danger">*</span>
-                                                        </label>
+														    <label>
+																        Category <span class="text-danger">*</span>
+															</label>
+															    <select class="form-control" name="category_id" required>
+																	        <option value="">-- Select Category --</option>
+																			        @foreach($categories as $category)
+																					           <option value="{{ $category->id }}"
+																							                  {{ isset($item) && $item->category_id == $category->id ? 'selected' : '' }}>
+																											                 {{ $category->category_name }}
+																															   </option>
+																															    @endforeach
+																															</select>
+																														</div>
 
-                                                       <select class="form-control" name="category_id" required>
-                                                            <option value="">Select Category</option>
-                                                            @foreach($categories as $category)
-                                                       <option value="{{ $category->id }}">
-                                                       {{ $category->category_name }}
-                                                         </option>
-                                                        @endforeach
-                                                       </select>
-                                                       </div>
 
 
             </div>
@@ -353,20 +354,22 @@
       <th scope="col">Normal Price</th>
       <th scope="col">Offer Price</th>
       <th scope="col">category</th>
+	  <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
     @php 
      $i=1;
     @endphp
-    @foreach($item as $key)
+    @foreach($items as $key)
     <tr>
       <th scope="row">{{$i}}</th>
       <td>{{$key->item_name}}</td>
       <td>{{$key->image}}</td>
       <td>{{$key->normal_price}}</td>
       <td>{{$key->offer_price}}</td>
-      <td>{{$key->category}}</td>
+      <td>{{ $key->category->category_name ?? '-' }}</td>
+	   <td>  <button type="button" class="btn btn-sm btn-primary edititem" data-id="{{$key->id}}">Edit</button></td>
       
     </tr>
 
@@ -379,7 +382,72 @@
     @endforeach
     
   </tbody>
-</table>
+</table>  
+
+                                 <div class="modal fade" id="edit_item_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Items</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                   <form method="POST" action="{{url('edititem')}}" enctype="multipart/form-data" name="crmedit">
+
+                                                @csrf
+               
+            <div class="form-group">
+														<label>Item Name
+														<span class="text-danger">*</span></label>
+														<input type="hidden" id="item_keyid" name="keyid">
+														<input type="text" class="form-control" id="item_name" name="item_name" placeholder="Enter item name" required />
+														
+													</div>
+
+													 <div class="form-group">
+														<label>Image <span class="text-danger">*</span></label><br>
+														 <img id="image_preview" src="" alt="Image" style="max-width:100px; margin-bottom:10px;">
+														 <input type="file" class="form-control" id="image" name="image" accept="image/*"/>
+														</div>
+
+													 <div class="form-group">
+														<label>Normal price
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="normal_price" name="normal_price" placeholder="Enter price" required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>Offer price
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="offer_price" name="offer_price" placeholder="Enter offer" required />
+														
+													</div>
+
+													<div class="form-group">
+												<label>Category <span class="text-danger">*</span></label>
+												<select class="form-control" id="category_id" name="category_id" required>
+													<option value="">Select Category</option>
+													@foreach($categories as $category)
+													<option value="{{ $category->id }}"
+													{{ isset($item) && $item->category_id == $category->id ? 'selected' : '' }}>{{ $category->category_name }}
+												</option>
+												@endforeach
+											</select>
+										</div>
+
+										</div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
+            </div>
+			</form>
+        </div>
+    </div>
+</div>
 
                                         
 										<!--end: Datatable-->

@@ -44,3 +44,144 @@
     });
 </script>
 
+<script>
+    $(document).on('click', '.editcategory', function () {
+        var id = $(this).attr('data-id'); // 🔥 safest
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('categoryfetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#category_name').val(obj.category_name);
+		  $('#cat_keyid').val(id);
+					},
+					});	
+		}
+        $('#edit_cat_modal').modal('show');
+    });
+</script>
+
+<script>
+    $(document).on('click', '.editmenus', function () {
+        var id = $(this).attr('data-id'); // 🔥 safest
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('menufetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#create_menu').val(obj.create_menu);
+		  $('#shop_id').val(obj.shop_id);
+		  $('#item_id').val(obj.item_id);
+		  $('#menu_keyid').val(id);
+					},
+					});	
+		}
+        $('#edit_menu_modal').modal('show');
+    });
+</script>
+
+<script>
+    $(document).on('click', '.editshop', function () {
+        var id = $(this).attr('data-id'); // 🔥 safest
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('shopfetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#name').val(obj.name);
+		  $('#email').val(obj.email);
+		  $('#address').val(obj.address);
+		  $('#phone_number').val(obj.phone_number);
+		  $('#district').val(obj.district);
+		  $('#state').val(obj.state);
+		  $('#gst_number').val(obj.gst_number);
+		  $('#ffssai').val(obj.ffssai);
+		  $('#municipality_license').val(obj.municipality_license);
+		  $('#shop_owner_name').val(obj.shop_owner_name);
+		  $('#aadhar_card').val(obj.aadhar_card);
+		  $('#pancard').val(obj.pancard);
+		  $('#shop_keyid').val(id);
+					},
+					});	
+		}
+        $('#edit_shop_modal').modal('show');
+    });
+</script>
+
+
+<script>
+    $(document).on('click', '.editstaff', function () {
+        var id = $(this).attr('data-id'); // 🔥 safest
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('stafffetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#staff_name').val(obj.staff_name);
+		  $('#phone_number').val(obj.phone_number);
+		  $('#email').val(obj.email);
+		  $('#password').val(obj.password);
+		  $('#staff_id').val(obj.staff_id);
+		  $('#staff_image_preview').attr('src', obj.staff_image_url); 
+
+		  
+		  $('#staff_keyid').val(id);
+					},
+					});	
+		}
+        $('#edit_staff_modal').modal('show');
+    });
+</script>
+
+<script>
+    $(document).on('click', '.edititem', function () {
+        var id = $(this).attr('data-id'); // 🔥 safest
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('itemfetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#item_name').val(obj.item_name);
+		  $('#image_preview').attr('src', obj.image_url); 
+		  $('#normal_price').val(obj.normal_price);
+		  $('#offer_price').val(obj.offer_price);
+		  $('#category_id').val(obj.category_id);
+
+		  
+		  $('#item_keyid').val(id);
+					},
+					});	
+		}
+        $('#edit_item_modal').modal('show');
+    });
+</script>

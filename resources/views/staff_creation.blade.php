@@ -124,6 +124,11 @@
         {{ session('success') }}
     </div>
 @endif
+	@if(session('error'))
+ <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 								<!--end::Notice-->
 								<!--begin::Card-->
 								<div class="card card-custom">
@@ -217,24 +222,59 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Category</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Items</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
-                   <form method="POST" action="{{url('createcategory')}}" enctype="multipart/form-data" name="crmedit">
+                   <form method="POST" action="{{ route('staff_creation.create') }}" enctype="multipart/form-data">
+
 
                                                 @csrf
                
             <div class="form-group">
-														<label>Category name
+														<label>Staff Name
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="category_name" placeholder="Enter category name" required />
+														<input type="text" class="form-control" name="staff_name" placeholder="Enter staff name" required />
 														
 													</div>
 
                                                      
+                                                     <div class="form-group">
+														<label>Phone Number
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="phone_number" placeholder="Enter phone number" required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>Email
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="email" placeholder="Enter email" required />
+														
+													</div>
+                                                     <div class="form-group">
+														<label>password
+														<span class="text-danger">*</span></label>
+														<input type="password" class="form-control" name="password" placeholder="Enter password" required />
+														
+													</div>
+
+                                                    <div class="form-group">
+														<label>staff_id
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="staff_id" placeholder="Enter staff id" required />
+														
+													</div>
+                                                    
+                                                    <div class="form-group">
+                                                        <label>Staff Image 
+                                                        <span class="text-danger">*</span></label>
+                                                        <input type="file" class="form-control" name="staff_image" accept="image/*" required/>
+
+                                                    </div>
+ 
 
             </div>
 
@@ -293,9 +333,8 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0"><button type="button" id="kt_datatable_search_button"class="btn btn-light-primary px-6 font-weight-bold">Search</button>
-
-
+												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
+													<a href="#" class="btn btn-light-primary px-6 font-weight-bold">Search</a>
 												</div>
 											</div>
 										</div>
@@ -308,19 +347,29 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">category_name</th>
+      <th scope="col">Staff Name</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col">Staff ID</th>
+      <th scope="col">Staff Image</th>
 	  <th scope="col">Action</th>
-      </tr>
+    </tr>
   </thead>
   <tbody>
     @php 
      $i=1;
     @endphp
-    @foreach($category as $key)
+    @foreach($staff_creation as $key)
     <tr>
       <th scope="row">{{$i}}</th>
-      <td>{{$key->category_name}}</td>
-       <td>  <button type="button" class="btn btn-sm btn-primary editcategory" data-id="{{$key->id}}">Edit</button></td>
+      <td>{{$key->staff_name}}</td>
+      <td>{{$key->phone_number}}</td>
+      <td>{{$key->email}}</td>
+      <td>{{$key->password}}</td>
+      <td>{{$key->staff_id}}</td>
+      <td>{{$key->staff_image}}</td>
+	   <td>  <button type="button" class="btn btn-sm btn-primary editstaff" data-id="{{$key->id}}">Edit</button></td>
       
     </tr>
 
@@ -335,29 +384,63 @@
   </tbody>
 </table>
 
-
-                                    <div class="modal fade" id="edit_cat_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="edit_staff_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Category</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Staff Creation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
-                   <form method="POST" action="{{url('editcategory')}}" enctype="multipart/form-data" name="crmedit">
+                   <form method="POST" action="{{url('editstaff')}}" enctype="multipart/form-data" name="crmedit">
 
                                                 @csrf
                
             <div class="form-group">
-														<label>Category name
+														<label>Staff Name
 														<span class="text-danger">*</span></label>
-														<input type="hidden" id="cat_keyid" name="keyid">
-														<input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter category name" required />
+														<input type="hidden" id="staff_keyid" name="keyid">
+														<input type="text" class="form-control" id="staff_name" name="staff_name" placeholder="Enter staff name" required />
 														
 													</div>
 
+                                                    <div class="form-group">
+														<label>Phone Number
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter phone number" required />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>Email
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="email" name="email" placeholder="Enter email" required />
+														
+													</div>
+                                                     <div class="form-group">
+														<label>password
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="password" name="password" placeholder="Enter password" required />
+														
+													</div>
+
+                                                    <div class="form-group">
+														<label>staff_id
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="staff_id"  name="staff_id" placeholder="Enter staff id" required />
+														
+													</div>
+                                                    
+                                                  <div class="form-group">
+    <label>Staff Image <span class="text-danger">*</span></label><br>
+    <img id="staff_image_preview" src="" alt="Staff Image" style="max-width:100px; margin-bottom:10px;">
+    <input type="file" class="form-control" id="staff_image" name="staff_image" accept="image/*"/>
+</div>
+
+
+                                                    
 
             </div>
 
