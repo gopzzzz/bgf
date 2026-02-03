@@ -371,7 +371,14 @@ return redirect()->back()->with('success', 'Data edited successfully!');
    } catch (\Exception $e) {
       return redirect()->back()->with('error', $e->getMessage());
    }
-}  }
+} 
+
+public function addshops(){
+    return view('addshops');
+}
+
+
+}
 
 
 

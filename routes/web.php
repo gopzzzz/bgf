@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -42,6 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/editstaff', [HomeController::class, 'editstaff'])->name('editstaff');
     Route::post('/itemfetch', [HomeController::class, 'itemfetch'])->name('itemfetch');
     Route::post('/edititem', [HomeController::class, 'edititem'])->name('edititem');
+
+    //shops
+    
+    Route::get('/addshops', [HomeController::class, 'addshops'])->name('addshops');
     
     });
 
