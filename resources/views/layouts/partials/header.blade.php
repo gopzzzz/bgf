@@ -31,9 +31,9 @@
 									</li>
 									<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
 										<a href="javascript:;" class="menu-link menu-toggle">
-											<span class="menu-text">Features</span>
+											<span class="menu-text">Create Bill</span>
 											<span class="menu-desc"></span>
-											<i class="menu-arrow"></i>
+											<!-- <i class="menu-arrow"></i> -->
 										</a>
 										<div class="menu-submenu menu-submenu-classic menu-submenu-left">
 											<ul class="menu-subnav">
@@ -148,9 +148,9 @@
 												</li>
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
-														<span class="svg-icon menu-icon">
+														<span class="svg-icon menu-icon"> -->
 															<!--begin::Svg Icon | path:assets/media/svg/icons/Files/Pictures1.svg-->
-															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+															<!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 																<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 																	<rect x="0" y="0" width="24" height="24" />
 																	<path d="M3.5,21 L20.5,21 C21.3284271,21 22,20.3284271 22,19.5 L22,8.5 C22,7.67157288 21.3284271,7 20.5,7 L10,7 L7.43933983,4.43933983 C7.15803526,4.15803526 6.77650439,4 6.37867966,4 L3.5,4 C2.67157288,4 2,4.67157288 2,5.5 L2,19.5 C2,20.3284271 2.67157288,21 3.5,21 Z" fill="#000000" opacity="0.3" />
@@ -158,9 +158,9 @@
 																	<polygon fill="#000000" points="11 19 15 14 19 19" />
 																	<path d="M18,12 C18.8284271,12 19.5,11.3284271 19.5,10.5 C19.5,9.67157288 18.8284271,9 18,9 C17.1715729,9 16.5,9.67157288 16.5,10.5 C16.5,11.3284271 17.1715729,12 18,12 Z" fill="#000000" opacity="0.3" />
 																</g>
-															</svg>
+															</svg> -->
 															<!--end::Svg Icon-->
-														</span>
+														<!-- </span>
 														<span class="menu-text">Custom</span>
 														<i class="menu-arrow"></i>
 													</a>
@@ -275,8 +275,8 @@
 												</li>
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
-														<span class="svg-icon menu-icon">
-															<!--begin::Svg Icon | path:assets/media/svg/icons/General/Thunder-move.svg-->
+														<span class="svg-icon menu-icon">-->
+														<!--	begin::Svg Icon | path:assets/media/svg/icons/General/Thunder-move.svg-->
 															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 																<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 																	<rect x="0" y="0" width="24" height="24" />
@@ -575,9 +575,9 @@
 												</li>
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
-														<span class="svg-icon menu-icon">
+														<span class="svg-icon menu-icon"> -->
 															<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Dial-numbers.svg-->
-															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+															<!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 																<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 																	<rect x="0" y="0" width="24" height="24" />
 																	<rect fill="#000000" opacity="0.3" x="4" y="4" width="4" height="4" rx="2" />
@@ -590,9 +590,9 @@
 																	<rect fill="#000000" x="10" y="16" width="4" height="4" rx="2" />
 																	<rect fill="#000000" x="16" y="16" width="4" height="4" rx="2" />
 																</g>
-															</svg>
+															</svg> -->
 															<!--end::Svg Icon-->
-														</span>
+														<!-- </span>
 														<span class="menu-text">Charts</span>
 														<i class="menu-arrow"></i>
 													</a>
@@ -664,18 +664,18 @@
 												</li>
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
-														<span class="svg-icon menu-icon">
+														<span class="svg-icon menu-icon"> -->
 															<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Incoming-box.svg-->
-															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+															<!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 																<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 																	<rect x="0" y="0" width="24" height="24" />
 																	<path d="M22,17 L22,21 C22,22.1045695 21.1045695,23 20,23 L4,23 C2.8954305,23 2,22.1045695 2,21 L2,17 L6.27924078,17 L6.82339262,18.6324555 C7.09562072,19.4491398 7.8598984,20 8.72075922,20 L15.381966,20 C16.1395101,20 16.8320364,19.5719952 17.1708204,18.8944272 L18.118034,17 L22,17 Z" fill="#000000" />
 																	<path d="M2.5625,15 L5.92654389,9.01947752 C6.2807805,8.38972356 6.94714834,8 7.66969497,8 L16.330305,8 C17.0528517,8 17.7192195,8.38972356 18.0734561,9.01947752 L21.4375,15 L18.118034,15 C17.3604899,15 16.6679636,15.4280048 16.3291796,16.1055728 L15.381966,18 L8.72075922,18 L8.17660738,16.3675445 C7.90437928,15.5508602 7.1401016,15 6.27924078,15 L2.5625,15 Z" fill="#000000" opacity="0.3" />
 																	<path d="M11.1288761,0.733697713 L11.1288761,2.69017121 L9.12120481,2.69017121 C8.84506244,2.69017121 8.62120481,2.91402884 8.62120481,3.19017121 L8.62120481,4.21346991 C8.62120481,4.48961229 8.84506244,4.71346991 9.12120481,4.71346991 L11.1288761,4.71346991 L11.1288761,6.66994341 C11.1288761,6.94608579 11.3527337,7.16994341 11.6288761,7.16994341 C11.7471877,7.16994341 11.8616664,7.12798964 11.951961,7.05154023 L15.4576222,4.08341738 C15.6683723,3.90498251 15.6945689,3.58948575 15.5161341,3.37873564 C15.4982803,3.35764848 15.4787093,3.33807751 15.4576222,3.32022374 L11.951961,0.352100892 C11.7412109,0.173666017 11.4257142,0.199862688 11.2472793,0.410612793 C11.1708299,0.500907473 11.1288761,0.615386087 11.1288761,0.733697713 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.959697, 3.661508) rotate(-270.000000) translate(-11.959697, -3.661508)" />
 																</g>
-															</svg>
+															</svg> -->
 															<!--end::Svg Icon-->
-														</span>
+														<!-- </span>
 														<span class="menu-text">Maps</span>
 														<i class="menu-arrow"></i>
 													</a>
@@ -836,7 +836,7 @@
 																	<rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1" />
 																</g>
 															</svg>
-															<!--end::Svg Icon-->
+															<!-- end::Svg Icon-->
 														</span>
 														<span class="menu-text">Layout Builder</span>
 													</a>
@@ -846,7 +846,7 @@
 									</li>
 									<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
 										<a href="javascript:;" class="menu-link menu-toggle">
-											<span class="menu-text">Crud</span>
+											<span class="menu-text">Shops</span>
 											<span class="menu-desc"></span>
 											<i class="menu-arrow"></i>
 										</a>
@@ -855,7 +855,7 @@
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
 														<span class="svg-icon menu-icon">
-															<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Box2.svg-->
+															<!-- begin::Svg Icon | path:assets/media/svg/icons/Shopping/Box2.svg -->
 															<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 																<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 																	<rect x="0" y="0" width="24" height="24" />
@@ -863,10 +863,10 @@
 																	<path d="M4.21611835,7.74669402 C4.30015839,7.64056877 4.40623188,7.55087574 4.5299008,7.48500698 L11.5299008,3.75665466 C11.8237589,3.60013944 12.1762411,3.60013944 12.4700992,3.75665466 L19.4700992,7.48500698 C19.5654307,7.53578262 19.6503066,7.60071528 19.7226939,7.67641889 L12.0479413,12.1074394 C11.9974761,12.1365754 11.9509488,12.1699127 11.9085461,12.2067543 C11.8661433,12.1699127 11.819616,12.1365754 11.7691509,12.1074394 L4.21611835,7.74669402 Z" fill="#000000" opacity="0.3" />
 																</g>
 															</svg>
-															<!--end::Svg Icon-->
+															<!-- end::Svg Icon -->
 														</span>
-														<span class="menu-text">Forms &amp; Controls</span>
-														<i class="menu-arrow"></i>
+														<a href="{{URL('shop')}}" class="menu-link"><span class="menu-text">Shop Entries</span></a>
+														<!-- <i class="menu-arrow"></i>
 													</a>
 													<div class="menu-submenu menu-submenu-classic menu-submenu-right">
 														<ul class="menu-subnav">
@@ -1299,7 +1299,7 @@
 															</li>
 														</ul>
 													</div>
-												</li>
+												</li> -->
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
 														<span class="svg-icon menu-icon">
@@ -1313,8 +1313,8 @@
 															</svg>
 															<!--end::Svg Icon-->
 														</span>
-														<span class="menu-text">KTDatatable</span>
-														<i class="menu-arrow"></i>
+														<a href="{{URL('menus')}}" class="menu-link"><span class="menu-text">Menu</span></a>
+														<!-- <i class="menu-arrow"></i>
 													</a>
 													<div class="menu-submenu menu-submenu-classic menu-submenu-right">
 														<ul class="menu-subnav">
@@ -1500,7 +1500,7 @@
 															</li>
 														</ul>
 													</div>
-												</li>
+												</li> -->
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
 														<span class="svg-icon menu-icon">
@@ -1514,8 +1514,8 @@
 															</svg>
 															<!--end::Svg Icon-->
 														</span>
-														<span class="menu-text">Datatables.net</span>
-														<i class="menu-arrow"></i>
+														<a href="{{URL('staff_creation')}}" class="menu-link"><span class="menu-text">Staff Creation</span></a>
+														<!-- <i class="menu-arrow"></i>
 													</a>
 													<div class="menu-submenu menu-submenu-classic menu-submenu-right">
 														<ul class="menu-subnav">
@@ -1778,7 +1778,7 @@
 															</li>
 														</ul>
 													</div>
-												</li>
+												</li> -->
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
 														<span class="svg-icon menu-icon">
@@ -1829,7 +1829,7 @@
 									</li>
 									<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
 										<a href="javascript:;" class="menu-link menu-toggle">
-											<span class="menu-text">Apps</span>
+											<span class="menu-text">Masters</span>
 											<span class="menu-desc"></span>
 											<i class="menu-arrow"></i>
 										</a>
@@ -1848,8 +1848,8 @@
 															</svg>
 															<!--end::Svg Icon-->
 														</span>
-														<span class="menu-text">Users</span>
-														<i class="menu-arrow"></i>
+														<a href="{{URL('hsnlist')}}" class="menu-link"><span class="menu-text">HSN CREATION</span></a>
+														<!-- <i class="menu-arrow"></i>
 													</a>
 													<div class="menu-submenu menu-submenu-classic menu-submenu-right">
 														<ul class="menu-subnav">
@@ -1903,7 +1903,7 @@
 															</li>
 														</ul>
 													</div>
-												</li>
+												</li> -->
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
 														<span class="svg-icon menu-icon">
@@ -1916,8 +1916,8 @@
 															</svg>
 															<!--end::Svg Icon-->
 														</span>
-														<span class="menu-text">Profile</span>
-														<i class="menu-arrow"></i>
+														<a href="{{URL('category')}}" class="menu-link"><span class="menu-text">Category</span></a>
+														<!-- <i class="menu-arrow"></i>
 													</a>
 													<div class="menu-submenu menu-submenu-classic menu-submenu-right">
 														<ul class="menu-subnav">
@@ -2000,7 +2000,7 @@
 															</li>
 														</ul>
 													</div>
-												</li>
+												</li> -->
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
 														<span class="svg-icon menu-icon">
@@ -2014,8 +2014,8 @@
 															</svg>
 															<!--end::Svg Icon-->
 														</span>
-														<span class="menu-text">Contacts</span>
-														<i class="menu-arrow"></i>
+														<a href="{{URL('item')}}" class="menu-link"><span class="menu-text">Items</span></a>
+														<!-- <i class="menu-arrow"></i>
 													</a>
 													<div class="menu-submenu menu-submenu-classic menu-submenu-right">
 														<ul class="menu-subnav">
@@ -2061,7 +2061,7 @@
 															</li>
 														</ul>
 													</div>
-												</li>
+												</li> -->
 												<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 													<a href="javascript:;" class="menu-link menu-toggle">
 														<span class="svg-icon menu-icon">
@@ -2585,7 +2585,7 @@
 									</li>
 									<li class="menu-item menu-item-submenu" data-menu-toggle="click" aria-haspopup="true">
 										<a href="javascript:;" class="menu-link menu-toggle">
-											<span class="menu-text">Pages</span>
+											<span class="menu-text">Reports</span>
 											<span class="menu-desc"></span>
 											<i class="menu-arrow"></i>
 										</a>
