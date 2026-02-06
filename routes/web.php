@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/editstaff', [HomeController::class, 'editstaff'])->name('editstaff');
     Route::post('/itemfetch', [HomeController::class, 'itemfetch'])->name('itemfetch');
     Route::post('/edititem', [HomeController::class, 'edititem'])->name('edititem');
+    Route::get('/createbill', [HomeController::class, 'createbill'])->name('createbill');
+   
+    Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill');
 
     //shops
     

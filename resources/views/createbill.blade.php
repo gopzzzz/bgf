@@ -170,98 +170,127 @@
        
     </div>
 
-    <form method="POST" action="{{ route('shop.create') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('generatebill') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="modal-body">
 
-            <!-- ================= PERSONAL DETAILS ================= -->
-            <h5 class="mb-4 text-primary">Personal Details</h5>
+          
+           
+			  
             <div class="row">
 
-                <div class="col-sm-3 form-group">
-                    <label>Shop Owner Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="shop_owner_name" required>
+               
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- LEFT SCROLLABLE ITEMS -->
+        <div class="col-md-8 left-panel">
+
+            <!-- SEARCH -->
+            <div class="row mb-3">
+                <div class="col-md-4 ms-auto">
+                    <input type="text" class="form-control" placeholder="Search items">
+                </div>
+            </div>
+
+            <!-- ITEMS GRID -->
+            <div class="row g-3">
+                <!-- ITEM -->
+               <div class="col-md-4">
+                    <div class="item-card">
+                       <img src="assets/images/logo.jpeg">
+                        <div><strong>Item 3</strong><br><small>₹10</small></div>
+                        <button class="btn btn-sm btn-outline-danger">-</button>
+                    </div>
+                </div>
+               <div class="col-md-4">
+                    <div class="item-card">
+                       <img src="assets/images/logo.jpeg">
+                        <div><strong>Item 3</strong><br><small>₹10</small></div>
+                        <button class="btn btn-sm btn-outline-primary">+</button>
+                    </div>
                 </div>
 
-                <div class="col-sm-3 form-group">
-                    <label>Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="email" required>
+                <!-- DUPLICATE ITEMS FOR SCROLL DEMO -->
+                <div class="col-md-4">
+                    <div class="item-card">
+                       <img src="assets/images/logo.jpeg">
+                        <div><strong>Item 3</strong><br><small>₹10</small></div>
+                        <button class="btn btn-sm btn-outline-primary">+</button>
+                    </div>
                 </div>
 
-                <div class="col-sm-3 form-group">
-                    <label>Phone Number <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="phone_number" required>
+                <div class="col-md-4">
+                    <div class="item-card">
+                        <img src="assets/images/logo.jpeg">
+                        <div><strong>Item 4</strong><br><small>₹10</small></div>
+                        <button class="btn btn-sm btn-outline-primary">+</button>
+                    </div>
                 </div>
 
-                <div class="col-sm-3 form-group">
-                    <label>Aadhar Card <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="aadhar_card" required>
-                </div>
+                <!-- repeat as needed -->
+            </div>
+        </div>
 
-                <div class="col-sm-3 form-group">
-                    <label>PAN Card <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="pancard" required>
-                </div>
+        <!-- RIGHT STICKY BILL -->
+        <div class="col-md-4 bill-panel">
 
+            <!-- SHOP INFO -->
+            <div class="text-center mb-3">
+                <strong>LOGO</strong><br>
+                <small>Shop Address</small>
             </div>
 
             <hr>
 
-            <!-- ================= SHOP DETAILS ================= -->
-            <h5 class="mb-4 text-primary">Shop Details</h5>
-            <div class="row">
+            <!-- BILL META -->
+            <p><strong>Bill No:</strong> 1</p>
+            <p><strong>Date:</strong> dd/mm/yyyy</p>
 
-                <div class="col-sm-3 form-group">
-                    <label>Shop Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="name" required>
+            <hr>
+
+            <!-- BILL ITEMS -->
+            <div class="bill-items mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>I1</span>
+                    <div>
+                          <span class="ms-2">₹10</span>
+                        <button class="btn btn-sm btn-outline-secondary qty-btn">-</button>
+                        <span class="mx-2">1</span>
+                        <button class="btn btn-sm btn-outline-secondary qty-btn">+</button>
+                        <span class="ms-2">₹10</span>
+                    </div>
                 </div>
 
-                <div class="col-sm-3 form-group">
-                    <label>Address <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="address" required>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>I2</span>
+                    <div>
+                         <span class="ms-2">₹10</span>
+                        <button class="btn btn-sm btn-outline-secondary qty-btn">-</button>
+                        <span class="mx-2">1</span>
+                        <button class="btn btn-sm btn-outline-secondary qty-btn">+</button>
+                         <span class="ms-2">₹10</span>
+                       
+                    </div>
                 </div>
-
-                <div class="col-sm-3 form-group">
-                    <label>District <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="district" required>
-                </div>
-
-                <div class="col-sm-3 form-group">
-                    <label>State <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="state" required>
-                </div>
-
-                <div class="col-sm-3 form-group">
-                    <label>GST Number <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="gst_number" required>
-                </div>
-
-                <div class="col-sm-3 form-group">
-                    <label>FSSAI <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="ffssai" required>
-                </div>
-
-                <div class="col-sm-3 form-group">
-                    <label>Municipality License <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="municipality_license" required>
-                </div>
-
             </div>
 
+            <hr>
 
-			  <h5 class="mb-4 text-primary">Create Password</h5>
-            <div class="row">
+            <!-- TOTAL -->
+            <h5 class="mb-3">Total : ₹98</h5>
 
-                <div class="col-sm-3 form-group">
-                    <label>Create Password<span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" name="name" required>
-                </div>
+            <!-- PAY BUTTON -->
+            <div class="proceed-btn">
+                <button class="btn btn-success w-100">
+                    GENERATE BILL
+                </button>
+            </div>
 
-				   <div class="col-sm-3 form-group">
-                    <label>Confirm Password<span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" name="password" required>
-                </div>
+        </div>
+    </div>
+</div>
 
                
 
@@ -270,10 +299,7 @@
 
         </div>
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-light-primary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
+       
     </form>
 
 									

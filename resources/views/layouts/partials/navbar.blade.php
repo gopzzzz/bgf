@@ -7,7 +7,7 @@
                     <div id="kt_header_mobile" class="header-mobile">
 						<!--begin::Logo-->
 						<a href="index.html">
-							<img alt="Logo" src="assets/media/logos/logo-default.png" class="max-h-30px" />
+							<img alt="Logo" src="assets/media/logos/logo-default.png" class="max-h-70px" />
 						</a>
 						<!--end::Logo-->
 						<!--begin::Toolbar-->
@@ -40,7 +40,11 @@
 							<div class="d-none d-lg-flex align-items-center mr-3">
 								<!--begin::Logo-->
 								<a href="index.html" class="mr-20">
+<<<<<<< HEAD
 									<img alt="Logo" src="assets/media/logos/logo-default.png" class="logo-default max-h-35px" />
+=======
+									<img alt="Logo" src="assets/images/logo.jpeg" class="logo-default max-h-70px" />
+>>>>>>> d2ba5db7f73f6bd7418b752eb5edd5bedbf67d4a
 								</a>
 								<!--end::Logo-->
 							</div>
