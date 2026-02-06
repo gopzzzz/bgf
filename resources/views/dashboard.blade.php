@@ -258,7 +258,7 @@
 																<a href="#" class="text-white font-weight-bolder font-size-h3">Franchises Registration</a>
 																<p class="text-white opacity-75 font-weight-bold mt-3">Your QSR Partner Revolutionizing Quick Service Restaurants</p>
 															</div>
-															<a href='#' class="btn btn-link btn-link-white font-weight-bold">Read More
+															<a href="{{url('addshops')}}" class="btn btn-link btn-link-white font-weight-bold">Create
 															<span class="svg-icon svg-icon-lg svg-icon-white">
 																<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg-->
 																<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

@@ -9,8 +9,11 @@ use App\Models\Item;
 use App\Models\Shop_registrations;
 use App\Models\Menus;
 use App\models\Staff_creation;
+use App\models\User;
+
 use Auth;
 use DB;
+use Hash;
 
 class HomeController extends Controller
 {
@@ -99,33 +102,54 @@ public function createitem(Request $request) {
         $shop=DB::table('shop_registrations')->get();
         return view('shop',compact('shop'));
     }
-    public function createshop(Request $request){
+    public function createshop(Request $request)
+{
+    $request->validate([
+        'name'         => 'required|string|max:255',
+        'email'        => 'required|email|unique:users,email',
+        'phone_number' => 'required|digits_between:10,12',
+        'address'      => 'required|string',
+        'district'     => 'required|string',
+        'state'        => 'required|string',
+    ]);
 
-
-   try {
-       
-       $shop = new Shop_registrations();
-       $shop->name    = $request->name;
-       $shop->email        = $request->email;
-       $shop->address = $request->address;
-       $shop->phone_number  = $request->phone_number;
-       $shop->district  = $request->district;
-       $shop->state  = $request->state;
-       $shop->gst_number  = $request->gst_number;
-       $shop->ffssai  = $request->ffssai;
-       $shop->municipality_license  = $request->municipality_license;
-       $shop->shop_owner_name  = $request->shop_owner_name;
-       $shop->aadhar_card  = $request->aadhar_card;
-       $shop->pancard  = $request->pancard;
-       $shop->save();
-
-       return redirect()->back()->with('success', 'Data created successfully!');
-   } catch (\Exception $e) {
-      return redirect()->back()->with('error', $e->getMessage());
-
-   }
     
 
+    try {
+
+        // Create User
+        $user = User::create([
+            'name'     => $request->name,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password), // or generate random
+             'role' => '2', 
+        ]);
+
+        // Create Shop
+        Shop_registrations::create([
+            'user_id'               => $user->id,
+            'name'                  => $request->name,
+            'email'                 => $request->email,
+            'address'               => $request->address,
+            'phone_number'          => $request->phone_number,
+            'district'              => $request->district,
+            'state'                 => $request->state,
+            'gst_number'            => $request->gst_number,
+            'ffssai'                => $request->ffssai,
+            'municipality_license'  => $request->municipality_license,
+            'shop_owner_name'       => $request->shop_owner_name,
+            'aadhar_card'           => $request->aadhar_card,
+            'pancard'               => $request->pancard,
+        ]);
+
+        DB::commit();
+
+        return redirect()->back()->with('success', 'Shop created successfully!');
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('error', $e->getMessage());
+    }
 }
 public function menulist()
 {
@@ -376,7 +400,12 @@ return redirect()->back()->with('success', 'Data edited successfully!');
 public function addshops(){
     return view('addshops');
 }
-
+public function createbill(){
+     return view('createbill');
+}
+public function generatebill(Request $request){
+ return view('generatebill');
+}
 
 }
 
