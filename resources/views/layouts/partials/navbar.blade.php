@@ -40,11 +40,7 @@
 							<div class="d-none d-lg-flex align-items-center mr-3">
 								<!--begin::Logo-->
 								<a href="index.html" class="mr-20">
-<<<<<<< HEAD
-									<img alt="Logo" src="assets/media/logos/logo-default.png" class="logo-default max-h-35px" />
-=======
 									<img alt="Logo" src="assets/images/logo.jpeg" class="logo-default max-h-70px" />
->>>>>>> d2ba5db7f73f6bd7418b752eb5edd5bedbf67d4a
 								</a>
 								<!--end::Logo-->
 							</div>
