@@ -166,7 +166,7 @@
 										<!--end: Search Form-->
 
     <div class="modal-header">
-        <h5 class="modal-title">Shop Entries</h5>
+        <h5 class="modal-title">Edit Shop Entries</h5>
        
     </div>
 
@@ -180,109 +180,119 @@
     </div>
 @endif
 
-    <form method="POST" action="{{ route('shop.create') }}" enctype="multipart/form-data">
-        @csrf
+    <form method="POST" action="{{ route('shop.update', $shop->id) }}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
 
         <div class="modal-body">
 
             <!-- ================= PERSONAL DETAILS ================= -->
-            <h5 class="mb-4 text-primary">Personal Details</h5>
+            <h5 class="mb-4 text-primary">Edit Personal Details</h5>
             <div class="row">
 
                 <div class="col-sm-3 form-group">
                     <label>Shop Owner Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="shop_owner_name" required>
+                    <input type="text" class="form-control" name="shop_owner_name"  value="{{ $shop->shop_owner_name }}" >
                 </div>
 
                 <div class="col-sm-3 form-group">
                     <label>Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" name="email" required>
+                    <input type="email" class="form-control" name="email" value="{{ $shop->email }}" >
                 </div>
 
                 <div class="col-sm-3 form-group">
                     <label>Phone Number <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="phone_number" required>
+                    <input type="text" class="form-control" name="phone_number" value="{{$shop->phone_number}}">
                 </div>
 
                 <div class="col-sm-3 form-group">
 					<label>Aadhar Number <span class="text-danger">*</span></label>
-					<input type="text" class="form-control" name="aadhar_number" maxlength="12" required>
+					<input type="text" class="form-control" name="aadhar_number" maxlength="12" value="{{$shop->aadhar_number}}">
 				</div>
-				
-				<div class="col-sm-3 form-group">
-					<label>Upload Aadhar Card <span class="text-danger">*</span></label>
-					<input type="file" class="form-control" name="aadhar_card" required>
-				</div>
-
+				<div>
+				@if($shop->aadhar_card)
+                    <p>Current File: 
+                        <a href="{{ asset('uploads/'.$shop->aadhar_card) }}" target="_blank">View</a>
+                    </p>
+                    @endif
+                    <input type="file" class="form-control" name="aadhar_card"></div>
+                  
 
                 <div class="col-sm-3 form-group">
                     <label>PAN Card <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="pancard_number" required>
+                    <input type="text" class="form-control" name="pancard_number" value="{{$shop->pancard_number}}" >
                 </div>
 
-				
-                <div class="col-sm-3 form-group">
-                    <label>Upload PAN Card <span class="text-danger">*</span></label>
-                    <input type="file" class="form-control" name="pan_proof" required>
-                </div>
+				<div>
+                @if($shop->pan_proof)
+                    <p>Current File: 
+                        <a href="{{ asset('uploads/'.$shop->pan_proof) }}" target="_blank">View</a>
+                    </p>
+                    @endif
+                    <input type="file" class="form-control" name="pan_proof"></div>
 
             </div>
 
             <hr>
 
             <!-- ================= SHOP DETAILS ================= -->
-            <h5 class="mb-4 text-primary">Shop Details</h5>
+            <h5 class="mb-4 text-primary">Edit Shop Details</h5>
             <div class="row">
 
                 <div class="col-sm-3 form-group">
                     <label>Shop Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="name" required>
+                    <input type="text" class="form-control" name="name" value="{{$shop->name}}" >
                 </div>
 
                 <div class="col-sm-3 form-group">
                     <label>Address <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="address" required>
+                    <input type="text" class="form-control" name="address" value="{{$shop->address}}">
                 </div>
 
                 <div class="col-sm-3 form-group">
                     <label>District <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="district" required>
+                    <input type="text" class="form-control" name="district" value="{{$shop->district}}">
                 </div>
 
                 <div class="col-sm-3 form-group">
                     <label>State <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="state" required>
+                    <input type="text" class="form-control" name="state"value="{{$shop->state}}">
                 </div>
 
                 <div class="col-sm-3 form-group">
                     <label>GST Number <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" name="gst_number" required>
+                    <input type="text" class="form-control" name="gst_number" value="{{$shop->gst_number}}">
                 </div>
 
-                <div class="col-sm-3 form-group">
-                    <label>FSSAI <span class="text-danger">*</span></label>
-                    <input type="file" class="form-control" name="ffssai" accept=".jpg,.jpeg,.png,.pdf" required>
-                </div>
+               <div> @if($shop->ffssai)
+                    <p>Current File: 
+                        <a href="{{ asset('uploads/'.$shop->ffssai) }}" target="_blank">View</a>
+                    </p>
+                    @endif
+                    <input type="file" class="form-control" name="ffssai"></div>
 
-                <div class="col-sm-3 form-group">
-                    <label>Municipality License <span class="text-danger">*</span></label>
-                    <input type="file" class="form-control" name="municipality_license" accept=".jpg,.jpeg,.png,.pdf" required>
-                </div>
+
+                 <div>@if($shop->municipality_license)
+                    <p>Current File: 
+                        <a href="{{ asset('uploads/'.$shop->municipality_license) }}" target="_blank">View</a>
+                    </p>
+                    @endif
+                    <input type="file" class="form-control" name="municipality_license"></div>
 
             </div>
 
 
-			  <h5 class="mb-4 text-primary">Create Password</h5>
+			  <h5 class="mb-4 text-primary">Change Password</h5>
             <div class="row">
 
                 <div class="col-sm-3 form-group">
-                    <label>Create Password<span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" name="name" required>
+                    <label>Change Password<span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" name="password"  value="{{$shop->password}}" >
                 </div>
 
 				   <div class="col-sm-3 form-group">
                     <label>Confirm Password<span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" name="password" required>
+                    <input type="password" class="form-control" name="password_confirmation"  value="{{$shop->password}}">
                 </div>
 
                

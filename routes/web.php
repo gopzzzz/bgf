@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/item', [HomeController::class, 'itemlist'])->name('item.list');
     Route::post('/item', [HomeController::class, 'createitem'])->name('item.create');
     Route::get('/shop', [HomeController::class, 'shoplist'])->name('shop.list');
-    Route::post('/shop', [HomeController::class, 'createshop'])->name('shop.create');
+    Route::post('/shop/create', [HomeController::class, 'createshop'])->name('shop.create');
     Route::get('/menus', [HomeController::class, 'menulist'])->name('menu.list');
     Route::post('/menus', [HomeController::class, 'createmenus'])->name('menu.create');
     Route::post('/hsnfetch', [HomeController::class, 'hsnfetch'])->name('hsnfetch');
@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/editcategory', [HomeController::class, 'editcategory'])->name('editcategory');
     Route::post('/menufetch', [HomeController::class, 'menufetch'])->name('menufetch');
     Route::post('/editmenus', [HomeController::class, 'editmenus'])->name('editmenus');
-    Route::post('/shopfetch', [HomeController::class, 'shopfetch'])->name('shopfetch');
-    Route::post('/editshop', [HomeController::class, 'editshop'])->name('editshop');
+    Route::get('/shop/{id}/edit', [HomeController::class, 'editshop'])->name('shop.edit');
+    Route::put('/shop/{id}', [HomeController::class, 'updateshop'])->name('shop.update');
     Route::get('/staff_creation', [HomeController::class, 'staff_creationlist'])->name('staff_creation.list');
     Route::post('/staff_creation', [HomeController::class, 'createstaff_creation'])->name('staff_creation.create');
     Route::post('/stafffetch', [HomeController::class, 'stafffetch'])->name('stafffetch');
