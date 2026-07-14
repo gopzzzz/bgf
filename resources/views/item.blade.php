@@ -365,7 +365,14 @@
     <tr>
       <th scope="row">{{$i}}</th>
       <td>{{$key->item_name}}</td>
-      <td>{{$key->image}}</td>
+      <td>
+    @if($key->image)
+     <img src="{{ asset('uploads/items/'.$key->image) }}" width="80">
+@else
+    No Image
+@endif
+</td>
+
       <td>{{$key->normal_price}}</td>
       <td>{{$key->offer_price}}</td>
       <td>{{ $key->category->category_name ?? '-' }}</td>

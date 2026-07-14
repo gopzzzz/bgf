@@ -98,59 +98,95 @@ public function createitem(Request $request) {
     
     }
 
- public function shoplist(){
+    public function shoplist(){
         $shop=DB::table('shop_registrations')->get();
         return view('shop',compact('shop'));
     }
-    public function createshop(Request $request)
+
+public function createshop(Request $request)
 {
     $request->validate([
-        'name'         => 'required|string|max:255',
-        'email'        => 'required|email|unique:users,email',
-        'phone_number' => 'required|digits_between:10,12',
-        'address'      => 'required|string',
-        'district'     => 'required|string',
-        'state'        => 'required|string',
+        'name'           => 'required|string|max:255',
+        'email'          => 'required|email|unique:shop_registrations,email',
+        'phone_number'   => 'required|digits_between:10,12',
+        'address'        => 'required|string',
+        'district'       => 'required|string',
+        'state'          => 'required|string',
+        'gst_number'            => 'required|string|max:20',
+        'ffssai'                => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
+        'municipality_license'  => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
+        'shop_owner_name'       => 'required|string|max:20',
+        'aadhar_number'  => 'required|digits:12',
+        'aadhar_card'    => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
+        'pancard_number' => 'required|string|max:10',
+        'pan_proof'    => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
     ]);
 
-    
+    DB::beginTransaction(); // Start transaction
 
     try {
+        $ffssaiFileName = null;
+        $municipalityFileName = null;
+        $aadharFileName = null;
+        $panFileName = null;
 
-        // Create User
-        $user = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password), // or generate random
-             'role' => '2', 
+        if ($request->hasFile('ffssai')) {
+            $ffssaiFileName = time().'_ffssai_'.$request->file('ffssai')->getClientOriginalName();
+            $request->file('ffssai')->move(public_path('uploads'), $ffssaiFileName);
+            }
+            
+        if ($request->hasFile('municipality_license')) {
+            $municipalityFileName = time().'_municipality_'.$request->file('municipality_license')->getClientOriginalName();
+            $request->file('municipality_license')->move(public_path('uploads'), $municipalityFileName);
+            }
+
+        if ($request->hasFile('aadhar_card')) {
+            $aadharFileName = time().'_aadhar_'.$request->file('aadhar_card')->getClientOriginalName();
+            $request->file('aadhar_card')->move(public_path('uploads'), $aadharFileName);
+        }
+
+        if ($request->hasFile('pan_proof')) {
+            $panFileName = time().'_pan_'.$request->file('pan_proof')->getClientOriginalName();
+            $request->file('pan_proof')->move(public_path('uploads'), $panFileName);
+        }
+
+        // Insert data
+        DB::table('shop_registrations')->insert([
+            'name'           => $request->name,
+            'email'          => $request->email,
+            'phone_number'   => $request->phone_number,
+            'address'        => $request->address,
+            'district'       => $request->district,
+            'state'               => $request->state,
+            'gst_number'          => $request->gst_number ?? '', 
+            'ffssai'              => $ffssaiFileName,
+            'municipality_license'=> $municipalityFileName,
+            'shop_owner_name'     => $request->shop_owner_name ?? '',
+            'aadhar_number'  => $request->aadhar_number,
+            'aadhar_card'    => $aadharFileName,
+            'pancard_number' => $request->pancard_number,
+            'pan_proof'    => $panFileName,
+            'created_at'     => now(),
+            'updated_at'     => now(),
         ]);
 
-        // Create Shop
-        Shop_registrations::create([
-            'user_id'               => $user->id,
-            'name'                  => $request->name,
-            'email'                 => $request->email,
-            'address'               => $request->address,
-            'phone_number'          => $request->phone_number,
-            'district'              => $request->district,
-            'state'                 => $request->state,
-            'gst_number'            => $request->gst_number,
-            'ffssai'                => $request->ffssai,
-            'municipality_license'  => $request->municipality_license,
-            'shop_owner_name'       => $request->shop_owner_name,
-            'aadhar_card'           => $request->aadhar_card,
-            'pancard'               => $request->pancard,
-        ]);
+        
 
         DB::commit();
+        
 
         return redirect()->back()->with('success', 'Shop created successfully!');
 
+
+        
     } catch (\Exception $e) {
         DB::rollBack();
         return redirect()->back()->with('error', $e->getMessage());
+
+        
     }
 }
+
 public function menulist()
 {
     $menus = Menus::with(['item', 'shop'])->get();
@@ -251,22 +287,42 @@ public function editmenus(Request $request){
     }
 }
 
-public function shopfetch(Request $request){
- $id=$request->id;
-   $apps=Shop_registrations::find($id);
-  print_r(json_encode($apps));
+public function editshop($id)
+{
+    $shop = Shop_registrations::find($id);
+    return view('editshop', compact('shop'));
 }
 
-public function editshop(Request $request) {
+public function updateshop(Request $request, $id)
+{
+    $request->validate([
+    'name' => 'required|string|max:255',
+    'email' => 'required|email',
+    'phone_number' => 'required',
+    'address' => 'required',
+    'district' => 'required',
+    'state' => 'required',
+    'gst_number' => 'required',
+    'ffssai' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    'municipality_license' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    'shop_owner_name' => 'required',
+    'aadhar_number' => 'required|digits:12',
+    'aadhar_card' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+    'pancard_number' => 'required',
+    'pan_proof' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+
+
+]);
+
+    
     try {
-        // Get the shop model using the keyid from request
-        $shop = Shop_registrations::find($request->keyid);
+
+        $shop = Shop_registrations::find($id);
 
         if (!$shop) {
             return redirect()->back()->with('error', 'Shop not found.');
         }
 
-        // Update fields
         $shop->name = $request->name;
         $shop->email = $request->email;
         $shop->address = $request->address;
@@ -274,19 +330,48 @@ public function editshop(Request $request) {
         $shop->district = $request->district;
         $shop->state = $request->state;
         $shop->gst_number = $request->gst_number;
-        $shop->ffssai = $request->ffssai;
-        $shop->municipality_license = $request->municipality_license;
+    
+       
+
+        if ($request->hasFile('ffssai')) {
+            $file = $request->file('ffssai');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+            $shop->ffssai = $filename;
+        }
+
+        if ($request->hasFile('municipality_license')) {
+            $file = $request->file('municipality_license');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+            $shop->municipality_license = $filename;
+        }
+
         $shop->shop_owner_name = $request->shop_owner_name;
-        $shop->aadhar_card = $request->aadhar_card;
-        $shop->pancard = $request->pancard;
+        $shop->aadhar_number = $request->aadhar_number;
 
-        $shop->save(); // save changes
+        if ($request->hasFile('aadhar_card')) {
+            $file = $request->file('aadhar_card');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+            $shop->aadhar_card = $filename;
+        }
 
-        return redirect()->back()->with('success', 'Data Edited successfully!');
+         $shop->pancard_number = $request->pancard_number;
+
+        if ($request->hasFile('pan_proof')) {
+            $file = $request->file('pan_proof');
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'), $filename);
+            $shop->pan_proof = $filename;
+        }
+
+        $shop->save();
+
+        return redirect()->route('shop.list')->with('success', 'Updated successfully!');
+
     } catch (\Exception $e) {
-        // Optional: log the error to debug
-        // \Log::error($e->getMessage());
-        return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+        return redirect()->back()->with('error', 'Something went wrong.');
     }
 }
 

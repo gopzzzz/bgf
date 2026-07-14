@@ -307,7 +307,8 @@
       <td>{{$key->district}}</td>
       <td>{{$key->state}}</td>
   
-       <td>  <button type="button" class="btn btn-sm btn-primary editshop" data-id="{{$key->id}}">Edit</button></td>
+      <td><a href="{{ route('shop.edit', $key->id) }}" class="btn btn-sm btn-primary">Edit</a></td>
+
     </tr>
 
      @php 
@@ -320,9 +321,9 @@
     
   </tbody>
 </table>
-                       <div class="modal fade" id="edit_shop_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+                       <!-- <div class="modal fade" id="edit_shop_ modal"tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document"> -->
+        <!-- <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Shop Entries</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -338,14 +339,14 @@
 														<label>Name
 														<span class="text-danger">*</span></label>
 														<input type="hidden" id="shop_keyid" name="keyid">
-														<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required />
+														<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" />
 														
 													</div>
 
 												<div class="form-group">
 														<label>Email
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" required />
+														<input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" />
 														
 													</div>
 
@@ -353,35 +354,35 @@
                                                      <div class="form-group">
 														<label>Address
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required />
+														<input type="text" class="form-control" id="address" name="address" placeholder="Enter address" />
 														
 													</div>
 
                                                      <div class="form-group">
 														<label>Phone Number
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Number" required />
+														<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Number"  />
 														
 													</div>
 
                                                      <div class="form-group">
 														<label>District
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="district" name="district" placeholder="Enter district" required />
+														<input type="text" class="form-control" id="district" name="district" placeholder="Enter district"  />
 														
 													</div>
 
                                                     <div class="form-group">
 														<label>State
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="state" name="state" placeholder="Enter state" required />
+														<input type="text" class="form-control" id="state" name="state" placeholder="Enter state"  />
 
                                                     </div>
 
                                                     <div class="form-group">
 														<label>GST Number
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="gst_number" name="gst_number" placeholder="Enter GST" required />
+														<input type="text" class="form-control" id="gst_number" name="gst_number" placeholder="Enter GST" />
 
                                                     </div>
 
@@ -389,35 +390,46 @@
                                                     <div class="form-group">
 														<label>FFSSAI
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="ffssai" name="ffssai" placeholder="Enter FFSSAI" required />
+														<input type="file" class="form-control" id="ffssai" name="ffssai" placeholder="Enter FFSSAI"  />
 
                                                     </div>
 
                                                    <div class="form-group">
 														<label>Municipality License
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="municipality_license" name="municipality_license" placeholder="Enter License" required />
+														<input type="file" class="form-control" id="municipality_license" name="municipality_license" placeholder="Enter License"  />
 
                                                     </div>
 
                                                       <div class="form-group">
 														<label>Shop Owner Name
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="shop_owner_name" name="shop_owner_name" placeholder="Enter owner name" required />
+														<input type="text" class="form-control" id="shop_owner_name" name="shop_owner_name" placeholder="Enter owner name"  />
 
                                                     </div>
 
                                                     <div class="form-group">
-														<label>Aadhar card
+														<label>Aadhar Number
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="aadhar_card" name="aadhar_card" placeholder="Enter Aadhar" required />
+														<input type="text" class="form-control" id="aadhar_number" name="aadhar_number" placeholder="Enter Aadhar" />
 
                                                     </div>
 
+													<div class="form-group">
+														<label>Upload Aadhar Card <span class="text-danger">*</span></label>
+														<input type="file" class="form-control" id="aadhar_card" name="aadhar_card"  >
+													</div>
+
+													<div class="form-group">
+														<label>PAN Card <span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="pancard_number" name="pancard_number" >
+													</div>
+
+
                                                     <div class="form-group">
-														<label>Pancard
+														<label>Upload Pancard
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" id="pancard" name="pancard" placeholder="Enter pancard" required />
+														<input type="file" class="form-control" id="pan_proof" name="pan_proof" placeholder="Enter pancard"  />
 
                                                     </div>
 
@@ -432,7 +444,7 @@
 			</form>
         </div>
     </div>
-</div>
+</div> -->
 
 
                                         

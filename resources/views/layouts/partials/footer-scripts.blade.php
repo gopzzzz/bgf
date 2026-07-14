@@ -92,39 +92,7 @@
     });
 </script>
 
-<script>
-    $(document).on('click', '.editshop', function () {
-        var id = $(this).attr('data-id'); // 🔥 safest
-        
-    if(id){
-      $.ajax({
-					type: "POST",
-                    url: "{{route('shopfetch')}}",
-					data: {  "_token": "{{ csrf_token() }}",
-					id: id },
-					success: function (res) {
-					console.log(res);
-          var obj=JSON.parse(res)
-		 
-          $('#name').val(obj.name);
-		  $('#email').val(obj.email);
-		  $('#address').val(obj.address);
-		  $('#phone_number').val(obj.phone_number);
-		  $('#district').val(obj.district);
-		  $('#state').val(obj.state);
-		  $('#gst_number').val(obj.gst_number);
-		  $('#ffssai').val(obj.ffssai);
-		  $('#municipality_license').val(obj.municipality_license);
-		  $('#shop_owner_name').val(obj.shop_owner_name);
-		  $('#aadhar_card').val(obj.aadhar_card);
-		  $('#pancard').val(obj.pancard);
-		  $('#shop_keyid').val(id);
-					},
-					});	
-		}
-        $('#edit_shop_modal').modal('show');
-    });
-</script>
+
 
 
 <script>
