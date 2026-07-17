@@ -67,6 +67,36 @@
     });
 </script>
 
+
+<script>
+    $(document).on('click', '.editmaterials', function () {
+        var id = $(this).attr('data-id'); // 🔥 safest
+
+
+	
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('materialfetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					// console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#materialname').val(obj.name);
+		  $('#mrp').val(obj.mrp);
+		  $('#keyid').val(id);
+					},
+					});	
+		}
+        $('#edit_cat_modal').modal('show');
+    });
+</script>
+
+
+
 <script>
     $(document).on('click', '.editmenus', function () {
         var id = $(this).attr('data-id'); // 🔥 safest
