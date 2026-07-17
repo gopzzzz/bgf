@@ -263,6 +263,13 @@
       <th scope="col">item_id</th>
 	  <th scope="col">mrp</th>
       <th scope="col">rate</th>
+      <th scope="col">qty</th>
+      <th scope="col">total_amount</th>
+      <th scope="col">taxable_amount</th>
+      <th scope="col">master_id</th>
+      <th scope="col">created_at</th>
+      <th scope="col">updated_at</th>
+
       </tr>
   </thead>
   <tbody>
@@ -275,7 +282,12 @@
       <td>{{$key->item_id}}</td>
       <td>{{$key->mrp}}</td>
       <td>{{$key->rate}}</td>
-      
+      <td>{{$key->qty}}</td>
+      <td>{{$key->total_amount}}</td>
+      <td>{{$key->taxable_amount}}</td>
+      <td>{{$key->master_id}}</td>
+      <td>{{$key->created_at}}</td>
+      <td>{{$key->updated_at}}</td>
     </tr>
 
      @php 
