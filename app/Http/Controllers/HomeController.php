@@ -10,6 +10,9 @@ use App\Models\Shop_registrations;
 use App\Models\Menus;
 use App\models\Staff_creation;
 use App\models\User;
+use App\models\Brands;
+use App\Models\Materials;
+
 
 use Auth;
 use DB;
@@ -491,6 +494,54 @@ public function createbill(){
 public function generatebill(Request $request){
  return view('generatebill');
 }
+public function brandlist(){
+    $brand=DB::table('brands')->get();
+    return view('brandlist', compact('brand'));
+}
+public function materiallist(){
+    $material=DB::table('materials')->get();
+    return view('materiallist', compact('material'));
+}
+
+public function createbrand(Request $request){
+       try {
+        $brand = new Brands();
+        $brand->brand_name = $request->brand_name;
+        $brand->save();
+
+        return redirect()->back()
+            ->with('success', 'Data created successfully!');
+    } catch (Exception $e) {
+        return redirect()->back()
+            ->with('error', 'Something went wrong. Please try again.');
+    }
+
 
 
 }
+
+public function materialfetch(Request $request){
+   $id=$request->id;
+   $apps=DB::table('materials')->find($id);
+  print_r(json_encode($apps));
+}
+
+
+public function editmaterials(Request $request){
+
+      try {
+        $id=$request->keyid;
+        $materials =Materials::find($id);
+        $materials->name = $request->materialname;
+        $materials->save();
+
+        return redirect()->back()
+            ->with('success', 'Data Edited successfully!');
+    } catch (Exception $e) {
+        return redirect()->back()
+            ->with('error', 'Something went wrong. Please try again.');
+    }
+}
+
+}
+
