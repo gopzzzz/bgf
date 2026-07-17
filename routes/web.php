@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\ItemwiseReportController;
+ use App\Http\Controllers\SalesReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -58,9 +59,18 @@ Route::middleware('auth')->group(function () {
     //shops
     
     Route::get('/addshops', [HomeController::class, 'addshops'])->name('addshops');
+
+   
+    Route::get('/sales-report', [SalesReportController::class, 'index']);
+
+    
+
+    Route::get('/itemwise-report', [ItemwiseReportController::class, 'index']);
+
+    
     
     });
-
-
+   
 
 require __DIR__.'/auth.php';
+

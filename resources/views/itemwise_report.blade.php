@@ -3,8 +3,7 @@
 @section('content')
 
 
-<div class="d-flex flex-row flex-column-fluid">
-    <div class="container">
+<div class="d-flex flex-row flex-column-fluid container">
 						<!--begin::Content Wrapper-->
 						<div class="main d-flex flex-column flex-row-fluid">
 							<!--begin::Subheader-->
@@ -125,17 +124,12 @@
         {{ session('success') }}
     </div>
 @endif
-	@if(session('error'))
- <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
 								<!--end::Notice-->
 								<!--begin::Card-->
 								<div class="card card-custom">
 									<div class="card-header flex-wrap border-0 pt-6 pb-0">
 										<div class="card-title">
-											<h3 class="card-label">Local Datasource
+											<h3 class="card-label">Itemwise Report
 											<span class="text-muted pt-2 font-size-sm d-block">Javascript array as data source</span></h3>
 										</div>
 										<div class="card-toolbar">
@@ -205,86 +199,7 @@
 											</div>
 											<!--end::Dropdown-->
 											<!--begin::Button-->
-											<a href="#" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#exampleModal">
-											<span class="svg-icon svg-icon-md">
-												<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<rect x="0" y="0" width="24" height="24" />
-														<circle fill="#000000" cx="9" cy="15" r="6" />
-														<path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-													</g>
-												</svg>
-												<!--end::Svg Icon-->
-											</span>New Record</a>
-
-
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Menus</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                   <form method="POST" action="{{ route('menu.create') }}" enctype="multipart/form-data">
-
-
-                                                @csrf
-               
-            <div class="form-group">
-														<label>Create Menu
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="create_menu" placeholder="create menu" required /></div>
-														
-													
-
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Shops <span class="text-danger">*</span>
-                                                        </label>
-
-                                                       <select class="form-control" name="shop_id" required>
-                                                            <option value="">Select Shop</option>
-                                                            @foreach($shops as $shop)
-                                                       <option value="{{ $shop->id }}">
-                                                       {{ $shop->name }}
-                                                         </option>
-                                                        @endforeach
-                                                       </select>
-                                                       </div>
-
-													   
-                                                    <div class="form-group">
-                                                        <label>
-                                                           Items  <span class="text-danger">*</span>
-                                                        </label>
-
-                                                    <select class="form-control" name="item_id" required>
-                                                            <option value="">Select Item</option>
-                                                            @foreach($items as $item)
-                                                       <option value="{{ $item->id }}">
-                                                       {{ $item->item_name }}
-                                                        </option>
-                                                        @endforeach
-                                                        </select>
-
-
-
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
-
-                                            
+											
 											<!--end::Button-->
 										</div>
 									</div>
@@ -330,8 +245,9 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-													<a href="#" class="btn btn-light-primary px-6 font-weight-bold">Search</a>
+												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0"><button type="button" id="kt_datatable_search_button"class="btn btn-light-primary px-6 font-weight-bold">Search</button>
+
+
 												</div>
 											</div>
 										</div>
@@ -344,27 +260,23 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Create menu</th>
-      <th scope="col">Shop</th>
-      <th scope="col">Item</th>
-	  <th scope="col">Action</th>
-      
-    </tr>
+      <th scope="col">item_id</th>
+	  <th scope="col">mrp</th>
+      <th scope="col">rate</th>
+      </tr>
   </thead>
   <tbody>
     @php 
      $i=1;
     @endphp
-    @foreach($menus as $menu)
-<tr>
-  <th scope="row">{{$i}}</th>
-  <td>{{$menu->create_menu}}</td>
-  <td>{{ $menu->shop->name ?? '-' }}</td>
-<td>{{ $menu->item->item_name ?? '-' }}</td>
-  <td>
-    <button type="button" class="btn btn-sm btn-primary editmenus" data-id="{{$menu->id}}">Edit</button>
-  </td>
-</tr>
+    @foreach($reports as $key)
+    <tr>
+      <th scope="row">{{$i}}</th>
+      <td>{{$key->item_id}}</td>
+      <td>{{$key->mrp}}</td>
+      <td>{{$key->rate}}</td>
+      
+    </tr>
 
      @php 
 
@@ -377,61 +289,8 @@
   </tbody>
 </table>
 
-      <div class="modal fade" id="edit_menu_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Menus</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                   <form method="POST" action="{{url('editmenus')}}" enctype="multipart/form-data" name="crmedit">
 
-                                                @csrf
-               
-                                            <div class="form-group">
-                                                 <label>Create Menu <span class="text-danger">*</span></label>
-                                                 <input type="hidden" id="menu_keyid" name="keyid">
-                                                 <input type="text" class="form-control" id="create_menu" name="create_menu" placeholder="edit menu" required />
-                                            </div>
-
-
-											<div class="form-group">
-												<label>Shops <span class="text-danger">*</span></label>
-												<select class="form-control" id="shop_id" name="shop_id" required>
-													<option value="">Select Shop</option>
-													@foreach($shops as $shop)
-													<option value="{{ $shop->id }}"
-													{{ isset($menu) && $menu->shop_id == $shop->id ? 'selected' : '' }}>{{ $shop->name }}
-												</option>
-												@endforeach
-											</select>
-										</div>
-										
-										<div class="form-group"><label>Items <span class="text-danger">*</span></label>
-										<select class="form-control" id="item_id" name="item_id" required>
-											<option value="">Select Item</option>
-											@foreach($items as $item)
-											<option value="{{ $item->id }}"
-											{{ isset($menu) && $menu->item_id == $item->id ? 'selected' : '' }}>{{ $item->item_name }}
-										</option>
-										@endforeach    
-									</select>
-								</div>
-
-								</div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
-            </div>
-			</form>
-        </div>
-    </div>
-</div>
-
+   
                                         
 										<!--end: Datatable-->
 									</div>
@@ -442,10 +301,6 @@
 						</div>
 						<!--begin::Content Wrapper-->
 					</div>
-                </div> <!-- end container -->
-            </div> <!-- end flex-row -->
 
 
 @endsection
-
-

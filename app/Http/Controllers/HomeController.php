@@ -517,6 +517,7 @@ public function createbrand(Request $request){
     }
 
 
+
 }
 
 public function materialfetch(Request $request){
