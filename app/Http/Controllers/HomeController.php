@@ -492,7 +492,5 @@ public function generatebill(Request $request){
  return view('generatebill');
 }
 
+
 }
-
-
-

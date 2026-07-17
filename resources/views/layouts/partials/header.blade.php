@@ -39,7 +39,7 @@
 									</li>
 									<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
 										<a href="javascript:;" class="menu-link menu-toggle">
-											<span class="menu-text">Shops</span>
+											<span class="menu-text">Franchise</span>
 											<span class="menu-desc"></span>
 											<i class="menu-arrow"></i>
 										</a>
@@ -186,19 +186,19 @@
 														</h3>
 														<ul class="menu-inner">
 															<li class="menu-item" aria-haspopup="true">
-																<a href="{{URL('hsnlist')}}" class="menu-link">
+																<a href="{{URL('sales-report')}}" class="menu-link">
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">HSN CREATION</span>
+																	<span class="menu-text">Sales Report</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
-																<a href="{{URL('category')}}" class="menu-link">
+																<a href="{{URL('itemwise-report')}}" class="menu-link">
 																	<i class="menu-bullet menu-bullet-line">
 																		<span></span>
 																	</i>
-																	<span class="menu-text">Category</span>
+																	<span class="menu-text">Itemwise Report</span>
 																</a>
 															</li>
 															<li class="menu-item" aria-haspopup="true">
