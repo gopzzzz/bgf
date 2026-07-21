@@ -185,42 +185,58 @@
 </script>
 
 
-	<script>
+<script>
 $(document).ready(function () {
 
-    // Add new row
     $("#addRow").click(function () {
 
         var row = `
         <tr>
-            <td><input type="text" class="form-control" name="material[]"></td>
 
-            <td><input type="number" class="form-control qty" name="qty[]"></td>
+            <td>
+                <select class="form-control" name="material_id[]">
+                    <option value="">Select Material</option>
 
-            <td><input type="number" class="form-control price" name="price[]"></td>
+                    @foreach($materials as $material)
+                        <option value="{{ $material->id }}">{{ $material->name }}</option>
+                    @endforeach
 
-            <td><input type="number" class="form-control total" name="total[]" readonly></td>
+                </select>
+            </td>
+
+            <td>
+                <input type="number" class="form-control qty" name="qty[]">
+            </td>
+
+            <td>
+                <input type="number" class="form-control price" name="price[]">
+            </td>
+
+            <td>
+                <input type="number" class="form-control total" name="total[]" readonly>
+            </td>
 
             <td class="text-center">
-                <button type="button" class="btn btn-danger btn-sm removeRow">-</button>
+                <button type="button" class="btn btn-danger btn-sm removeRow">
+                    -
+                </button>
             </td>
-        </tr>`;
+
+        </tr>
+        `;
 
         $("#materialTable tbody").append(row);
+
     });
 
-    // Remove row
     $(document).on("click", ".removeRow", function () {
-
-        if ($("#materialTable tbody tr").length > 1) {
-            $(this).closest("tr").remove();
-        } else {
-            alert("At least one row is required.");
-        }
-
+        $(this).closest("tr").remove();
     });
-
 
 });
 </script>
 
+
+
+
+	
