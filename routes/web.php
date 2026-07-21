@@ -4,8 +4,12 @@ use App\Http\Controllers\ItemwiseReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\PurchaseReportController;
 
+=======
+use App\Http\Controllers\MaterialPurchaseOrderController;
+>>>>>>> 3e06839637a3a9b54a52a9df37b6080dbcbd8cd1
 
 Route::get('/', function () {
     return view('auth.login');
@@ -70,6 +74,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/itemwise-report', [ItemwiseReportController::class, 'index']);
 
     Route::get('/purchase-report', [PurchaseReportController::class, 'index']);
+
+    
+
+
+
+Route::get('/materialpurchaseorder', [MaterialPurchaseOrderController::class, 'index'])
+    ->name('materialpurchaseorder');
 
     
     

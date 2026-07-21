@@ -28,7 +28,9 @@
         <!--end::Page-->
     </div>
 
-    @include('layouts.partials.sidebar') @include('layouts.partials.footer-scripts')
+    @include('layouts.partials.sidebar') 
+    
+    @include('layouts.partials.footer-scripts')
 
 
 

@@ -503,6 +503,7 @@ public function materiallist(){
     return view('materiallist', compact('material'));
 }
 
+
 public function createbrand(Request $request){
        try {
         $brand = new Brands();
