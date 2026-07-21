@@ -35,6 +35,13 @@
 											<span class="menu-desc"></span>
 											<!-- <i class="menu-arrow"></i> -->
 										</a>
+
+										<li class="menu-item">
+                                           <a href="{{ url('materialpurchaseorder') }}" class="menu-link">
+                                               <span class="menu-text">Material Purchase Order</span>
+                                        </a>
+                                        </a>
+                                        </li>
 										
 									</li>
 									<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
