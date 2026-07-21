@@ -4,6 +4,8 @@ use App\Http\Controllers\ItemwiseReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PurchaseReportController;
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -54,7 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill');
      Route::post('/editmaterials', [HomeController::class, 'editmaterials'])->name('editmaterials');
 
-    
+     
 
     //shops
     
@@ -66,6 +68,8 @@ Route::middleware('auth')->group(function () {
     
 
     Route::get('/itemwise-report', [ItemwiseReportController::class, 'index']);
+
+    Route::get('/purchase-report', [PurchaseReportController::class, 'index']);
 
     
     
