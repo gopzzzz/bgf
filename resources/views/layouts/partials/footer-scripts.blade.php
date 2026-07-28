@@ -185,6 +185,7 @@
 </script>
 
 
+@if(isset($materials))
 <script>
 $(document).ready(function () {
 
@@ -192,13 +193,14 @@ $(document).ready(function () {
 
         var row = `
         <tr>
-
             <td>
                 <select class="form-control" name="material_id[]">
                     <option value="">Select Material</option>
 
                     @foreach($materials as $material)
-                        <option value="{{ $material->id }}">{{ $material->name }}</option>
+                        <option value="{{ $material->id }}">
+                            {{ $material->name }}
+                        </option>
                     @endforeach
 
                 </select>
@@ -217,11 +219,8 @@ $(document).ready(function () {
             </td>
 
             <td class="text-center">
-                <button type="button" class="btn btn-danger btn-sm removeRow">
-                    -
-                </button>
+                <button type="button" class="btn btn-danger btn-sm removeRow">-</button>
             </td>
-
         </tr>
         `;
 
@@ -235,8 +234,4 @@ $(document).ready(function () {
 
 });
 </script>
-
-
-
-
-	
+@endif

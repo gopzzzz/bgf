@@ -65,7 +65,7 @@
 															</svg>
 															<!--end::Svg Icon-->
 														</span>
-														<span class="menu-text">Shop Entries</span>
+														<span class="menu-text">franchise Entre</span>
 														<i class="menu-arrow"></i>
 													</a>
 </li>

@@ -28,7 +28,7 @@
 													<a href="" class="text-muted">Base</a>
 												</li>
 												<li class="breadcrumb-item">
-													<a href="" class="text-muted">Local Data</a>
+													<a href="" class="text-muted">page name</a>
 												</li>
 											</ul>
 											<!--end::Breadcrumb-->
