@@ -125,7 +125,14 @@ public function createshop(Request $request)
         'pan_proof'    => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
     ]);
 
-    DB::beginTransaction(); // Start transaction
+    
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 2,
+        ]);
 
     try {
         $ffssaiFileName = null;
@@ -156,6 +163,7 @@ public function createshop(Request $request)
         // Insert data
         DB::table('shop_registrations')->insert([
             'name'           => $request->name,
+            'user_id'        =>$user->id,
             'email'          => $request->email,
             'phone_number'   => $request->phone_number,
             'address'        => $request->address,
@@ -175,7 +183,7 @@ public function createshop(Request $request)
 
         
 
-        DB::commit();
+       
         
 
         return redirect()->back()->with('success', 'Shop created successfully!');

@@ -4,8 +4,6 @@ use App\Http\Controllers\ItemwiseReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PurchaseReportController;
-
 use App\Http\Controllers\MaterialPurchaseOrderController;
 
 Route::get('/', function () {

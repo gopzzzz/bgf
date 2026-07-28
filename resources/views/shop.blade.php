@@ -14,7 +14,7 @@
 										<!--begin::Page Heading-->
 										<div class="d-flex align-items-baseline flex-wrap mr-5">
 											<!--begin::Page Title-->
-											<h5 class="text-dark font-weight-bold my-1 mr-5">Local Data</h5>
+											<h5 class="text-dark font-weight-bold my-1 mr-5">Franchise Entries</h5>
 											<!--end::Page Title-->
 											<!--begin::Breadcrumb-->
 											<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -134,8 +134,8 @@
 								<div class="card card-custom">
 									<div class="card-header flex-wrap border-0 pt-6 pb-0">
 										<div class="card-title">
-											<h3 class="card-label">Local Datasource
-											<span class="text-muted pt-2 font-size-sm d-block">Javascript array as data source</span></h3>
+											<h3 class="card-label">Franchise List
+											
 										</div>
 										<div class="card-toolbar">
 											<!--begin::Dropdown-->
@@ -280,7 +280,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-	    <th scope="col">Shop Owner Name</th>
+	    <th scope="col">Franchise Owner Name</th>
 		 <th scope="col">Phone Number</th>
       <th scope="col">Email</th>
       
