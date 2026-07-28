@@ -204,7 +204,7 @@
 											</div>
 											<!--end::Dropdown-->
 											<!--begin::Button-->
-											<a href="{{url('addshops')}}" class="btn btn-primary font-weight-bolder" >
+											<a href="#" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#exampleModal">
 											<span class="svg-icon svg-icon-md">
 												<!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -216,6 +216,58 @@
 												</svg>
 												<!--end::Svg Icon-->
 											</span>New Record</a>
+
+
+											  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create Shop</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                   <form method="POST" action="{{ route('createfranchiseshops') }}" enctype="multipart/form-data">
+
+
+                                                @csrf
+               
+            <div class="form-group">
+														<label>Shop Name
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="create_menu" placeholder="create shop name" required /></div>
+														
+													
+
+                                                    <div class="form-group">
+                                                        <label>
+                                                            Franchise <span class="text-danger">*</span>
+                                                        </label>
+
+                                                       <select class="form-control" name="shop_id" required>
+                                                            <option value="">Select Franchise</option>
+                                                            @foreach($franchsie as $shop)
+                                                       <option value="{{ $shop->id }}">
+                                                       {{ $shop->name }}
+                                                         </option>
+                                                        @endforeach
+                                                       </select>
+                                                       </div>
+
+													   
+                                                    
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+</div>
 
 
                                           
@@ -281,13 +333,7 @@
       <th scope="col">#</th>
       <th scope="col">Name</th>
 	    <th scope="col">Franchise Owner Name</th>
-		 <th scope="col">Phone Number</th>
-      <th scope="col">Email</th>
-      
-     <th scope="col">Address</th>
-      <th scope="col">District</th>
-      <th scope="col">State</th>
-     
+		
 	  <th scope="col">Action</th>
     </tr>
   </thead>
@@ -295,17 +341,12 @@
     @php 
      $i=1;
     @endphp
-    @foreach($shop as $key)
+    @foreach($shopnames as $key)
     <tr>
       <th scope="row">{{$i}}</th>
-     <td>{{ $key->shop_name }}</td>
-	    <td>{{$key->shop_owner_name}}</td>
-		      <td>{{$key->phone_number}}</td>
-      <td>{{$key->email}}</td>
-      <td>{{$key->address}}</td>
-
-      <td>{{$key->district}}</td>
-      <td>{{$key->state}}</td>
+     <td>{{ $key->brand_name }}</td>
+	    <td>{{$key->franchisename}}</td>
+		    
   
       <td>
     <button class="btn btn-sm btn-primary">Edit</button>

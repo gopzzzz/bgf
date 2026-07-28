@@ -223,14 +223,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                   <form method="POST" action="{{url('createcategory')}}" enctype="multipart/form-data" name="crmedit">
+                   <form method="POST" action="{{url('matrialadd')}}" enctype="multipart/form-data" name="crmedit">
 
                                                 @csrf
                
             <div class="form-group">
 				<label> name
 				<span class="text-danger">*</span></label>
-				<input type="text" class="form-control" name="category_name" placeholder="Enter category name" required />
+				<input type="text" class="form-control" name="name" placeholder="Enter category name" required />
 														
 			</div>
 

@@ -233,12 +233,12 @@
 
 
                                                 @csrf
-               
+<!--                
             <div class="form-group">
 														<label>Create Menu
 														<span class="text-danger">*</span></label>
 														<input type="text" class="form-control" name="create_menu" placeholder="create menu" required /></div>
-														
+														 -->
 													
 
                                                     <div class="form-group">
@@ -248,9 +248,9 @@
 
                                                        <select class="form-control" name="shop_id" required>
                                                             <option value="">Select Shop</option>
-                                                            @foreach($shops as $shop)
-                                                       <option value="{{ $shop->id }}">
-                                                       {{ $shop->name }}
+                                                            @foreach($brand as $shopbrand)
+                                                       <option value="{{ $shopbrand->id }}">
+                                                       {{ $shopbrand->brand_name }}
                                                          </option>
                                                         @endforeach
                                                        </select>
@@ -274,6 +274,22 @@
 
 
             </div>
+
+			<div class="form-group">
+														<label>Selling Rate
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="sr" placeholder="create menu" required /></div>
+										
+														 <div class="form-group">
+														<label>Special Rate
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="specialrate" placeholder="create menu" required /></div>
+										
+														<div class="form-group">
+														<label>BGF %
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="commission" placeholder="create menu" required /></div>
+										
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
@@ -344,9 +360,11 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Create menu</th>
-      <th scope="col">Shop</th>
+      <th scope="col">Shop Name</th>
       <th scope="col">Item</th>
+      <th scope="col">Selling rate</th>
+	   <th scope="col">Special rate</th>
+	    <th scope="col">BGF %</th>
 	  <th scope="col">Action</th>
       
     </tr>
@@ -358,9 +376,11 @@
     @foreach($menus as $menu)
 <tr>
   <th scope="row">{{$i}}</th>
-  <td>{{$menu->create_menu}}</td>
   <td>{{ $menu->shop->name ?? '-' }}</td>
-<td>{{ $menu->item->item_name ?? '-' }}</td>
+  <td>{{ $menu->item->item_name ?? '-' }}</td>
+  <td>{{ $menu->rate}}</td>
+  <td>{{ $menu->special_rate}}</td>
+  <td>{{ $menu->commission}}</td>
   <td>
     <button type="button" class="btn btn-sm btn-primary editmenus" data-id="{{$menu->id}}">Edit</button>
   </td>
@@ -431,21 +451,7 @@
         </div>
     </div>
 </div>
-<tbody>
-    @foreach($shops as $shop)
-    <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $shop->shop_name }}</td>
-        <td>{{ $shop->owner_name }}</td>
-        <td>{{ $shop->phone }}</td>
-        <td>
-            <a href="{{ route('shops.edit', $shop->id) }}" class="btn btn-sm btn-primary">
-                Edit
-            </a>
-        </td>
-    </tr>
-    @endforeach
-</tbody>
+
                                         
 										<!--end: Datatable-->
 									</div>

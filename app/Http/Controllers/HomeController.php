@@ -202,12 +202,14 @@ public function menulist()
 {
     $menus = Menus::with(['item', 'shop'])->get();
     $shops = Shop_registrations::all();
+    $brand = DB::table('tbl_shopbrands')->get();
     $items = Item::all();
 
     return view('menus', [
         'menus' => $menus,
         'shops' => $shops,
         'items' => $items,
+        'brand' => $brand
     ]);
 }
 
@@ -215,9 +217,12 @@ public function createmenus(Request $request)
 {
     try {
         $menus = new Menus();
-        $menus->create_menu = $request->create_menu;
+        // $menus->create_menu = $request->create_menu;
         $menus->item_id = $request->item_id;
         $menus->shop_id = $request->shop_id;
+        $menus->rate = $request->sr;
+        $menus->special_rate = $request->specialrate;
+        $menus->commission = $request->commission;
         $menus->save();
 
         return redirect()->back()->with('success', 'Menu created successfully!');
@@ -509,6 +514,28 @@ public function brandlist(){
 public function materiallist(){
     $material=DB::table('materials')->get();
     return view('materiallist', compact('material'));
+}
+public function matrialadd(Request $request){
+try {
+
+    $material = new Materials();
+    $material->name = $request->name;
+    $material->mrp = $request->mrp;
+    $material->sr = $request->sr;
+    $material->brand = $request->brand;
+    $material->save();
+
+    return back()->with('success', 'Material created successfully.');
+
+} catch (\Exception $e) {
+
+    \Log::error($e->getMessage());
+
+    return back()
+        ->withInput()
+        ->with('error', 'Something went wrong. Please try again.');
+
+}
 }
 
 
