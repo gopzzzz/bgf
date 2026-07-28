@@ -1,13 +1,11 @@
 <?php
 use App\Http\Controllers\ItemwiseReportController;
- use App\Http\Controllers\SalesReportController;
+use App\Http\Controllers\SalesReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PurchaseReportController;
-
-
 use App\Http\Controllers\MaterialPurchaseOrderController;
+use App\Http\Controllers\ShopNameController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -74,14 +72,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase-report', [PurchaseReportController::class, 'index']);
 
     
-
-
+   
 
 Route::get('/materialpurchaseorder', [MaterialPurchaseOrderController::class, 'index'])
     ->name('materialpurchaseorder');
 
-    
-    
+
+
+
+
+  Route::get('/shop/edit/{id}', [ShopController::class, 'edit'])->name('shops.edit');
+
+
     });
    
 
