@@ -277,7 +277,7 @@
 
                 <div class="col-sm-3 form-group">
                     <label>Create Password<span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" name="name" required>
+                    <input type="password" class="form-control"  required>
                 </div>
 
 				   <div class="col-sm-3 form-group">
