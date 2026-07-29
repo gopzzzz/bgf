@@ -3,9 +3,9 @@
 @section('content')
 
 
-<div class="d-flex flex-row flex-column-fluid container">
+<div class="d-flex flex-row flex-column-fluid container-fluid">
 						<!--begin::Content Wrapper-->
-						<div class="main d-flex flex-column flex-row-fluid">
+					<div class="main d-flex flex-column flex-row-fluid w-100">
 							<!--begin::Subheader-->
 							<div class="subheader py-2 py-lg-6" id="kt_subheader">
 								<div class="w-100 d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -372,66 +372,83 @@
 </table>
 
 
-                                    <div class="modal fade" id="edit_cat_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                   <div class="modal fade" id="edit_cat_modal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Category</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                   <form method="POST" action="{{url('editmaterials')}}" enctype="multipart/form-data" name="crmedit">
 
-                                                @csrf
-               <input type="hidden" id="keyid" name="keyid">
-            <div class="form-group">
-				<label> name
-				<span class="text-danger">*</span></label>
-				<input type="text" class="form-control" name="materialname" id="materialname" placeholder="Enter category name" required />
-														
-			</div>
+            <form method="POST" action="{{ url('editmaterials') }}">
+                @csrf
 
-            <div class="form-group">
-				<label>mrp
-				<span class="text-danger">*</span></label>
-				<input type="text" class="form-control" name="mrp" id="mrp" placeholder="mrp" required />
-														
-			</div>
+                <input type="hidden" name="keyid" id="keyid">
 
-            
-            <div class="form-group">
-			<label>sr
-			<span class="text-danger">*</span></label>
-			<input type="text" class="form-control" name="sr" id="sr" placeholder="Enter sr" required />
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Material</h5>
 
-            </div>
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal">
+                        <i class="ki ki-close"></i>
+                    </button>
+                </div>
 
-            <div class="form-group">
-			<label>brand
-			<span class="text-danger">*</span></label>
-			<input type="text" class="form-control" name="brand" placeholder="Enter brand" required />
-														
-			</div>
+                <div class="modal-body">
 
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text"
+                               class="form-control"
+                               name="name"
+                               id="materialname"
+                               required>
+                    </div>
 
+                    <div class="form-group">
+                        <label>MRP</label>
+                        <input type="text"
+                               class="form-control"
+                               name="mrp"
+                               id="mrp"
+                               required>
+                    </div>
 
-                                                  
+                    <div class="form-group">
+                        <label>SR</label>
+                        <input type="text"
+                               class="form-control"
+                               name="sr"
+                               id="sr"
+                               required>
+                    </div>
 
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text"
+                               class="form-control"
+                               name="brand"
+                               id="brand"
+                               required>
+                    </div>
 
-            </div>
+                </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
-            </div>
-			</form>
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-light-primary"
+                            data-dismiss="modal">
+                        Close
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Save changes
+                    </button>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>
-
-
                                         
 										<!--end: Datatable-->
 									</div>

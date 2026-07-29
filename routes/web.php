@@ -8,9 +8,13 @@ use App\Http\Controllers\MaterialPurchaseOrderController;
 use App\Http\Controllers\PurchaseReportController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ShopNameController;
+<<<<<<< HEAD
 use App\Http\Controllers\ShopController;
 
 
+=======
+ use App\Http\Controllers\MaterialController;
+>>>>>>> f8518588c0b50b37ba850b18f2624212e1e6d896
 
 
 Route::get('/', function () {
@@ -63,10 +67,20 @@ Route::middleware('auth')->group(function () {
     Route::post('/materialfetch', [HomeController::class, 'materialfetch'])->name('materialfetch');
      Route::post('/matrialadd', [HomeController::class, 'matrialadd'])->name('matrialadd');
     
+<<<<<<< HEAD
     Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill'); 
      Route::post('/editmaterials', [HomeController::class, 'editmaterials'])->name('editmaterials');
        
     
+=======
+    Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill');
+   
+   
+    Route::post('/getmaterial', [ MaterialController::class,'getMaterial']);
+
+    Route::post('/editmaterials', [MaterialController::class,'updateMaterial']);
+
+>>>>>>> f8518588c0b50b37ba850b18f2624212e1e6d896
      
 
     //shops
