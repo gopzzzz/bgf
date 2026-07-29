@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Shop_registrations;
 use Illuminate\Support\Facades\DB;
 
-class ShopNameController extends Controller
+class MenuController extends Controller
 {
     public function index()
     {
-        $shops = DB::table('shop_registrations')->get();
+        $menus = DB::table('shop_registrations')->get();
 
-        return view('shop', compact('shops'));
+        return view('menus', compact('menus'));
     }
 }

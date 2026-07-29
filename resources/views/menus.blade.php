@@ -431,21 +431,7 @@
         </div>
     </div>
 </div>
-<tbody>
-    @foreach($shops as $shop)
-    <tr>
-        <td>{{ $loop->iteration }}</td>
-        <td>{{ $shop->shop_name }}</td>
-        <td>{{ $shop->owner_name }}</td>
-        <td>{{ $shop->phone }}</td>
-        <td>
-            <a href="{{ route('shops.edit', $shop->id) }}" class="btn btn-sm btn-primary">
-                Edit
-            </a>
-        </td>
-    </tr>
-    @endforeach
-</tbody>
+
                                         
 										<!--end: Datatable-->
 									</div>
@@ -461,5 +447,3 @@
 
 
 @endsection
-
-

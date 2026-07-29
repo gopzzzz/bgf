@@ -5,8 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialPurchaseOrderController;
-use App\Http\Controllers\ShopNameController;
-
+use App\Http\Controllers\PurchaseReportController;
+use App\Http\Controllers\MenuController;
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -29,14 +29,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/item', [HomeController::class, 'createitem'])->name('item.create');
     Route::get('/shop', [HomeController::class, 'shoplist'])->name('shop.list');
     Route::post('/shop/create', [HomeController::class, 'createshop'])->name('shop.create');
-    Route::get('/menus', [HomeController::class, 'menulist'])->name('menu.list');
-    Route::post('/menus', [HomeController::class, 'createmenus'])->name('menu.create');
+    Route::get('/menus', [MenuController::class, 'index'])->name('menu.list');
+    Route::post('/menus', [MenuController::class, 'store'])->name('menu.create');
     Route::post('/hsnfetch', [HomeController::class, 'hsnfetch'])->name('hsnfetch');
     Route::post('/edithsn', [HomeController::class, 'edithsn'])->name('edithsn');
     Route::post('/categoryfetch', [HomeController::class, 'categoryfetch'])->name('categoryfetch');
     Route::post('/editcategory', [HomeController::class, 'editcategory'])->name('editcategory');
-    Route::post('/menufetch', [HomeController::class, 'menufetch'])->name('menufetch');
-    Route::post('/editmenus', [HomeController::class, 'editmenus'])->name('editmenus');
+    Route::post('/menufetch', [MenuController::class, 'show'])->name('menufetch');
+    Route::post('/editmenus', [MenuController::class, 'update'])->name('editmenus');
     Route::get('/shop/{id}/edit', [HomeController::class, 'editshop'])->name('shop.edit');
     Route::put('/shop/{id}', [HomeController::class, 'updateshop'])->name('shop.update');
     Route::get('/staff_creation', [HomeController::class, 'staff_creationlist'])->name('staff_creation.list');
@@ -79,9 +79,9 @@ Route::get('/materialpurchaseorder', [MaterialPurchaseOrderController::class, 'i
 
 
 
+Route::post('/menus', [MenuController::class, 'store'])->name('menu.create');
 
-
-  Route::get('/shop/edit/{id}', [ShopController::class, 'edit'])->name('shops.edit');
+ 
 
 
     });
