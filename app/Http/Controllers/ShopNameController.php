@@ -37,4 +37,26 @@ class ShopNameController extends Controller
 }
 
     }
+    public function shopnamefetch(Request $request){
+       $id=$request->id;
+   $apps=Tbl_shopbrands::find($id);
+  print_r(json_encode($apps));
+        
+    }
+
+    public function editfranchiseshop(Request $request){
+ try {
+        $id=$request->id;
+        $shopname =Tbl_shopbrands::find($id);
+        $shopname->brand_name = $request->shopname;
+        $shopname->franchise_id     = $request->shop_id;
+        $shopname->save();
+
+        return redirect()->back()
+            ->with('success', 'Data Edited successfully!');
+    } catch (Exception $e) {
+        return redirect()->back()
+            ->with('error', 'Something went wrong. Please try again.');
+    }
+    }
 }

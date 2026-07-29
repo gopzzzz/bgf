@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialPurchaseOrderController;
 use App\Http\Controllers\PurchaseReportController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ShopNameController;
+use App\Http\Controllers\ShopController;
+
+
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -57,9 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/materialfetch', [HomeController::class, 'materialfetch'])->name('materialfetch');
      Route::post('/matrialadd', [HomeController::class, 'matrialadd'])->name('matrialadd');
     
-    Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill');
+    Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill'); 
      Route::post('/editmaterials', [HomeController::class, 'editmaterials'])->name('editmaterials');
-
+       
+    
      
 
     //shops
@@ -85,7 +92,18 @@ Route::get('/materialpurchaseorder', [MaterialPurchaseOrderController::class, 'i
 
 Route::post('/menus', [MenuController::class, 'store'])->name('menu.create');
 
- 
+Route::post('/shopbrands', [ShopNameController::class, 'store'])->name('shopbrands.create');
+
+Route::post('/shopnamefetch', [ShopNameController::class, 'shopnamefetch'])->name('shopnamefetch');
+
+Route::post('/editfranchiseshop', [ShopNameController::class, 'editfranchiseshop'])->name('editfranchiseshop');
+
+
+
+
+Route::get('/shops/{id}/edit', [ShopController::class, 'edit'])->name('shops.edit');
+Route::put('/shops/{id}', [ShopController::class, 'update'])->name('shops.update');
+
 
 
     });

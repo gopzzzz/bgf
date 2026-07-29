@@ -3,9 +3,9 @@
 @section('content')
 
 
-<div class="d-flex flex-row flex-column-fluid container">
+<div class="d-flex flex-row flex-column-fluid container-fluid">
 						<!--begin::Content Wrapper-->
-						<div class="main d-flex flex-column flex-row-fluid">
+					<div class="main d-flex flex-column flex-row-fluid w-100">
 							<!--begin::Subheader-->
 							<div class="subheader py-2 py-lg-6" id="kt_subheader">
 								<div class="w-100 d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -14,7 +14,7 @@
 										<!--begin::Page Heading-->
 										<div class="d-flex align-items-baseline flex-wrap mr-5">
 											<!--begin::Page Title-->
-											<h5 class="text-dark font-weight-bold my-1 mr-5">Local Data</h5>
+											<h5 class="text-dark font-weight-bold my-1 mr-5">Material Creation</h5>
 											<!--end::Page Title-->
 											<!--begin::Breadcrumb-->
 											<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -124,18 +124,13 @@
         {{ session('success') }}
     </div>
 @endif
-	@if(session('error'))
- <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
 								<!--end::Notice-->
 								<!--begin::Card-->
 								<div class="card card-custom">
 									<div class="card-header flex-wrap border-0 pt-6 pb-0">
 										<div class="card-title">
-											<h3 class="card-label">shop List
-											
+											<h3 class="card-label">Local Datasource
+											<span class="text-muted pt-2 font-size-sm d-block">Javascript array as data source</span></h3>
 										</div>
 										<div class="card-toolbar">
 											<!--begin::Dropdown-->
@@ -218,45 +213,56 @@
 											</span>New Record</a>
 
 
-											  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create Shop</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Category</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
-                   <form method="POST" action="{{ route('createfranchiseshops') }}" enctype="multipart/form-data">
-
+                   <form method="POST" action="{{url('matrialadd')}}" enctype="multipart/form-data" name="crmedit">
 
                                                 @csrf
                
             <div class="form-group">
-														<label>Shop Name
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="create_menu" placeholder="create shop name" required /></div>
+				<label> name
+				<span class="text-danger">*</span></label>
+				<input type="text" class="form-control" name="name" placeholder="Enter category name" required />
+														
+			</div>
+
+            <div class="form-group">
+				<label>mrp
+				<span class="text-danger">*</span></label>
+				<input type="text" class="form-control" name="mrp" placeholder="mrp" required />
+														
+			</div>
+
+            
+            <div class="form-group">
+			<label>sr
+			<span class="text-danger">*</span></label>
+			<input type="text" class="form-control" name="sr" placeholder="Enter sr" required />
+
+            </div>
+
+            <div class="form-group">
+			<label>brand
+			<span class="text-danger">*</span></label>
+			<input type="text" class="form-control" name="brand" placeholder="Enter brand" required />
+														
+			</div>
+
 														
 													
 
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Franchise <span class="text-danger">*</span>
-                                                        </label>
 
-                                                       <select class="form-control" name="shop_id" required>
-                                                            <option value="">Select Franchise</option>
-                                                            @foreach($franchsie as $shop)
-                                                       <option value="{{ $shop->id }}">
-                                                       {{ $shop->name }}
-                                                         </option>
-                                                        @endforeach
-                                                       </select>
-                                                       </div>
+                                                     
 
-													   
-                                                    
+            </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
@@ -267,10 +273,6 @@
 </div>
 </form>
 
-</div>
-
-
-                                          
                                             
 											<!--end::Button-->
 										</div>
@@ -317,8 +319,9 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-													<a href="#" class="btn btn-light-primary px-6 font-weight-bold">Search</a>
+												<div class="col-lg-3 col-xl-4 mt-5 mt-lg-0"><button type="button" id="kt_datatable_search_button"class="btn btn-light-primary px-6 font-weight-bold">Search</button>
+
+
 												</div>
 											</div>
 										</div>
@@ -332,28 +335,29 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
-	    <th scope="col">Franchise Owner Name</th>
-		
-	  <th scope="col">Action</th>
-    </tr>
+	 
+      <th scope="col">mrp</th>
+        <th scope="col">sr</th>
+                <th scope="col">brand</th>
+ <th scope="col">Action</th>
+
+      
+
+      </tr>
   </thead>
   <tbody>
     @php 
      $i=1;
     @endphp
-    @foreach($shopnames as $key)
+    @foreach($material as $key)
     <tr>
       <th scope="row">{{$i}}</th>
-     <td>{{ $key->brand_name }}</td>
-	    <td>{{$key->franchisename}}</td>
-		    
-     <td>
-    <a href="#" class="btn btn-sm btn-primary editshopname" data-id="{{$key->id}}" >
-        Edit
-    </a>
-</td>
+      <td>{{$key->name}}</td>
+       <td>{{$key->mrp}}</td>
+        <td>{{$key->sr}}</td>
+         <td>{{$key->brand}}</td>
+       <td>  <button type="button" class="btn btn-sm btn-primary editmaterials" data-id="{{$key->id}}">Edit</button></td>
       
-
     </tr>
 
      @php 
@@ -366,60 +370,85 @@
     
   </tbody>
 </table>
-                       <div class="modal fade" id="edit_cat_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document"> 
+
+
+                                   <div class="modal fade" id="edit_cat_modal">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Shop Entries</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                  <form method="POST" action="{{ route('editfranchiseshop') }}" enctype="multipart/form-data">
 
+            <form method="POST" action="{{ url('editmaterials') }}">
+                @csrf
 
-                                                @csrf
-               
-            <div class="form-group">
-														<label>Shop Name
-														<span class="text-danger">*</span></label>
-														<input type="hidden" id="keyid" name="id">
-														<input type="text" class="form-control" id="shop_name" name="shopname" placeholder="create shop name" required /></div>
-														
-													
+                <input type="hidden" name="keyid" id="keyid">
 
-                                                    <div class="form-group">
-                                                        <label>
-                                                            Franchise <span class="text-danger">*</span>
-                                                        </label>
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Material</h5>
 
-                                                       <select class="form-control" name="shop_id" id="franchise_id" required>
-                                                            <option value="">Select Franchise</option>
-                                                            @foreach($franchsie as $shop)
-                                                       <option value="{{ $shop->id }}">
-                                                       {{ $shop->name }}
-                                                         </option>
-                                                        @endforeach
-                                                       </select>
-                                                       </div>
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal">
+                        <i class="ki ki-close"></i>
+                    </button>
+                </div>
 
-													   
-                                                    
+                <div class="modal-body">
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
-            </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text"
+                               class="form-control"
+                               name="name"
+                               id="materialname"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>MRP</label>
+                        <input type="text"
+                               class="form-control"
+                               name="mrp"
+                               id="mrp"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SR</label>
+                        <input type="text"
+                               class="form-control"
+                               name="sr"
+                               id="sr"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text"
+                               class="form-control"
+                               name="brand"
+                               id="brand"
+                               required>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-light-primary"
+                            data-dismiss="modal">
+                        Close
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Save changes
+                    </button>
+                </div>
+
+            </form>
+
         </div>
     </div>
 </div>
-</form>
-        </div>
-    </div>
-</div> 
-
-
                                         
 										<!--end: Datatable-->
 									</div>

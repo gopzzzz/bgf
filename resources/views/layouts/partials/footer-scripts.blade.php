@@ -98,6 +98,36 @@
 
 
 <script>
+    $(document).on('click', '.editshopname', function () {
+               var id = $(this).attr('data-id'); // 🔥 safest
+              
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('shopnamefetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#franchise_id').val(obj.franchise_id);
+		  $('#shop_name').val(obj.brand_name);
+		 
+		  $('#keyid').val(id);
+					},
+					});	
+		}
+ 
+        $('#edit_cat_modal').modal('show');
+    });
+</script>
+
+
+
+
+<script>
     $(document).on('click', '.editmenus', function () {
         var id = $(this).attr('data-id'); // 🔥 safest
         
