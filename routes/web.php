@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialPurchaseOrderController;
 use App\Http\Controllers\ShopNameController;
+ use App\Http\Controllers\MaterialController;
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -58,7 +60,11 @@ Route::middleware('auth')->group(function () {
      Route::post('/matrialadd', [HomeController::class, 'matrialadd'])->name('matrialadd');
     
     Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill');
-     Route::post('/editmaterials', [HomeController::class, 'editmaterials'])->name('editmaterials');
+   
+   
+    Route::post('/getmaterial', [ MaterialController::class,'getMaterial']);
+
+    Route::post('/editmaterials', [MaterialController::class,'updateMaterial']);
 
      
 

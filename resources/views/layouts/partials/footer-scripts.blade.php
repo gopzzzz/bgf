@@ -69,60 +69,37 @@
 
 
 <script>
-    $(document).on('click', '.editmaterials', function () {
-        var id = $(this).attr('data-id'); // 🔥 safest
+$(document).on('click', '.editmaterials', function () {
 
+    let materialId = $(this).data('id');
 
-	
-        
-    if(id){
-      $.ajax({
-					type: "POST",
-                    url: "{{route('materialfetch')}}",
-					data: {  "_token": "{{ csrf_token() }}",
-					id: id },
-					success: function (res) {
-					// console.log(res);
-          var obj=JSON.parse(res)
-		 
-          $('#materialname').val(obj.name);
-		  $('#mrp').val(obj.mrp);
-		  $('#keyid').val(id);
-					},
-					});	
-		}
-        $('#edit_cat_modal').modal('show');
+    $.ajax({
+        url: "{{ url('getmaterial') }}",
+        type: "POST",
+
+        data: {
+            _token: "{{ csrf_token() }}",
+            id: materialId
+        },
+
+        success: function (response) {
+
+            $('#keyid').val(response.id);
+            $('#materialname').val(response.name);
+            $('#mrp').val(response.mrp);
+            $('#sr').val(response.sr);
+            $('#brand').val(response.brand);
+
+            $('#edit_cat_modal').modal('show');
+        },
+
+        error: function (xhr) {
+            console.log(xhr.responseText);
+            alert('Unable to load material data');
+        }
     });
+});
 </script>
-
-
-
-<script>
-    $(document).on('click', '.editmenus', function () {
-        var id = $(this).attr('data-id'); // 🔥 safest
-        
-    if(id){
-      $.ajax({
-					type: "POST",
-                    url: "{{route('menufetch')}}",
-					data: {  "_token": "{{ csrf_token() }}",
-					id: id },
-					success: function (res) {
-					console.log(res);
-          var obj=JSON.parse(res)
-		 
-          $('#create_menu').val(obj.create_menu);
-		  $('#shop_id').val(obj.shop_id);
-		  $('#item_id').val(obj.item_id);
-		  $('#menu_keyid').val(id);
-					},
-					});	
-		}
-        $('#edit_menu_modal').modal('show');
-    });
-</script>
-
-
 
 
 <script>
