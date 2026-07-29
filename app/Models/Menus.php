@@ -11,9 +11,12 @@ class Menus extends Model
     protected $table = 'menus';
 
     protected $fillable = [
-        'create_menu',
+        
         'item_id',
-        'shop_id'
+        'shop_id',
+        'rate',
+        'special_rate',
+        'commission'
     ];
 
    

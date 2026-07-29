@@ -1,10 +1,9 @@
-@extends('layouts.mainlayout')
+ @extends('layouts.mainlayout')
 
 @section('content')
 
 
-<div class="d-flex flex-row flex-column-fluid">
-    <div class="container">
+<div class="d-flex flex-row flex-column-fluid container">
 						<!--begin::Content Wrapper-->
 						<div class="main d-flex flex-column flex-row-fluid">
 							<!--begin::Subheader-->
@@ -15,7 +14,7 @@
 										<!--begin::Page Heading-->
 										<div class="d-flex align-items-baseline flex-wrap mr-5">
 											<!--begin::Page Title-->
-											<h5 class="text-dark font-weight-bold my-1 mr-5">Menu</h5>
+											<h5 class="text-dark font-weight-bold my-1 mr-5">Local Data</h5>
 											<!--end::Page Title-->
 											<!--begin::Breadcrumb-->
 											<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -135,8 +134,8 @@
 								<div class="card card-custom">
 									<div class="card-header flex-wrap border-0 pt-6 pb-0">
 										<div class="card-title">
-											<h3 class="card-label">Local Datasource
-											<span class="text-muted pt-2 font-size-sm d-block">Javascript array as data source</span></h3>
+											<h3 class="card-label">shop List
+											
 										</div>
 										<div class="card-toolbar">
 											<!--begin::Dropdown-->
@@ -219,77 +218,45 @@
 											</span>New Record</a>
 
 
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Menus</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Create Shop</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
-                   <form method="POST" action="{{ route('menu.create') }}" enctype="multipart/form-data">
+                   <form method="POST" action="{{ route('createfranchiseshops') }}" enctype="multipart/form-data">
 
 
                                                 @csrf
-<!--                
+               
             <div class="form-group">
-														<label>Create Menu
+														<label>Shop Name
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="create_menu" placeholder="create menu" required /></div>
-														 -->
+														<input type="text" class="form-control" name="create_menu" placeholder="create shop name" required /></div>
+														
 													
 
                                                     <div class="form-group">
                                                         <label>
-                                                            Shops <span class="text-danger">*</span>
+                                                            Franchise <span class="text-danger">*</span>
                                                         </label>
 
                                                        <select class="form-control" name="shop_id" required>
-                                                            <option value="">Select Shop</option>
-                                                            @foreach($brand as $shopbrand)
-                                                       <option value="{{ $shopbrand->id }}">
-                                                       {{ $shopbrand->brand_name }}
+                                                            <option value="">Select Franchise</option>
+                                                            @foreach($franchsie as $shop)
+                                                       <option value="{{ $shop->id }}">
+                                                       {{ $shop->name }}
                                                          </option>
                                                         @endforeach
                                                        </select>
                                                        </div>
 
 													   
-                                                    <div class="form-group">
-                                                        <label>
-                                                           Items  <span class="text-danger">*</span>
-                                                        </label>
-
-                                                    <select class="form-control" name="item_id" required>
-                                                            <option value="">Select Item</option>
-                                                            @foreach($items as $item)
-                                                       <option value="{{ $item->id }}">
-                                                       {{ $item->item_name }}
-                                                        </option>
-                                                        @endforeach
-                                                        </select>
-
-
-
-            </div>
-
-			<div class="form-group">
-														<label>Selling Rate
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="sr" placeholder="create menu" required /></div>
-										
-														 <div class="form-group">
-														<label>Special Rate
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="specialrate" placeholder="create menu" required /></div>
-										
-														<div class="form-group">
-														<label>BGF %
-														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="commission" placeholder="create menu" required /></div>
-										
+                                                    
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
@@ -300,6 +267,10 @@
 </div>
 </form>
 
+</div>
+
+
+                                          
                                             
 											<!--end::Button-->
 										</div>
@@ -360,31 +331,28 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Shop Name</th>
-      <th scope="col">Item</th>
-      <th scope="col">Selling rate</th>
-	   <th scope="col">Special rate</th>
-	    <th scope="col">BGF %</th>
+      <th scope="col">Name</th>
+	    <th scope="col">Franchise Owner Name</th>
+		
 	  <th scope="col">Action</th>
-      
     </tr>
   </thead>
   <tbody>
     @php 
      $i=1;
     @endphp
-    @foreach($menus as $menu)
-<tr>
-  <th scope="row">{{$i}}</th>
-  <td>{{ $menu->shop->name ?? '-' }}</td>
-  <td>{{ $menu->item->item_name ?? '-' }}</td>
-  <td>{{ $menu->rate}}</td>
-  <td>{{ $menu->special_rate}}</td>
-  <td>{{ $menu->commission}}</td>
-  <td>
-    <button type="button" class="btn btn-sm btn-primary editmenus" data-id="{{$menu->id}}">Edit</button>
-  </td>
-</tr>
+    @foreach($shopnames as $key)
+    <tr>
+      <th scope="row">{{$i}}</th>
+     <td>{{ $key->brand_name }}</td>
+	    <td>{{$key->franchisename}}</td>
+		    
+  
+      <td>
+    <button class="btn btn-sm btn-primary">Edit</button>
+</td>
+
+    </tr>
 
      @php 
 
@@ -396,52 +364,121 @@
     
   </tbody>
 </table>
-
-      <div class="modal fade" id="edit_menu_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+                       <!-- <div class="modal fade" id="edit_shop_ modal"tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document"> -->
+        <!-- <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Menus</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Shop Entries</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
             <div class="modal-body">
-                   <form method="POST" action="{{url('editmenus')}}" enctype="multipart/form-data" name="crmedit">
+                   <form method="POST" action="{{url('editshop')}}" enctype="multipart/form-data" name="crmedit">
 
                                                 @csrf
                
-                                            <div class="form-group">
-                                                 <label>Create Menu <span class="text-danger">*</span></label>
-                                                 <input type="hidden" id="menu_keyid" name="keyid">
-                                                 <input type="text" class="form-control" id="create_menu" name="create_menu" placeholder="edit menu" required />
-                                            </div>
+                                     <div class="form-group">
+														<label>Name
+														<span class="text-danger">*</span></label>
+														<input type="hidden" id="shop_keyid" name="keyid">
+														<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" />
+														
+													</div>
+
+												<div class="form-group">
+														<label>Email
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="email" name="email" placeholder="Enter Email" />
+														
+													</div>
 
 
-											<div class="form-group">
-												<label>Shops <span class="text-danger">*</span></label>
-												<select class="form-control" id="shop_id" name="shop_id" required>
-													<option value="">Select Shop</option>
-													@foreach($shops as $shop)
-													<option value="{{ $shop->id }}"
-													{{ isset($menu) && $menu->shop_id == $shop->id ? 'selected' : '' }}>{{ $shop->name }}
-												</option>
-												@endforeach
-											</select>
-										</div>
-										
-										<div class="form-group"><label>Items <span class="text-danger">*</span></label>
-										<select class="form-control" id="item_id" name="item_id" required>
-											<option value="">Select Item</option>
-											@foreach($items as $item)
-											<option value="{{ $item->id }}"
-											{{ isset($menu) && $menu->item_id == $item->id ? 'selected' : '' }}>{{ $item->item_name }}
-										</option>
-										@endforeach    
-									</select>
-								</div>
+                                                     <div class="form-group">
+														<label>Address
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="address" name="address" placeholder="Enter address" />
+														
+													</div>
 
-								</div>
+                                                     <div class="form-group">
+														<label>Phone Number
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter Number"  />
+														
+													</div>
+
+                                                     <div class="form-group">
+														<label>District
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="district" name="district" placeholder="Enter district"  />
+														
+													</div>
+
+                                                    <div class="form-group">
+														<label>State
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="state" name="state" placeholder="Enter state"  />
+
+                                                    </div>
+
+                                                    <div class="form-group">
+														<label>GST Number
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="gst_number" name="gst_number" placeholder="Enter GST" />
+
+                                                    </div>
+
+                                                    
+                                                    <div class="form-group">
+														<label>FFSSAI
+														<span class="text-danger">*</span></label>
+														<input type="file" class="form-control" id="ffssai" name="ffssai" placeholder="Enter FFSSAI"  />
+
+                                                    </div>
+
+                                                   <div class="form-group">
+														<label>Municipality License
+														<span class="text-danger">*</span></label>
+														<input type="file" class="form-control" id="municipality_license" name="municipality_license" placeholder="Enter License"  />
+
+                                                    </div>
+
+                                                      <div class="form-group">
+														<label>Shop Owner Name
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="shop_owner_name" name="shop_owner_name" placeholder="Enter owner name"  />
+
+                                                    </div>
+
+                                                    <div class="form-group">
+														<label>Aadhar Number
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="aadhar_number" name="aadhar_number" placeholder="Enter Aadhar" />
+
+                                                    </div>
+
+													<div class="form-group">
+														<label>Upload Aadhar Card <span class="text-danger">*</span></label>
+														<input type="file" class="form-control" id="aadhar_card" name="aadhar_card"  >
+													</div>
+
+													<div class="form-group">
+														<label>PAN Card <span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="pancard_number" name="pancard_number" >
+													</div>
+
+
+                                                    <div class="form-group">
+														<label>Upload Pancard
+														<span class="text-danger">*</span></label>
+														<input type="file" class="form-control" id="pan_proof" name="pan_proof" placeholder="Enter pancard"  />
+
+                                                    </div>
+
+                                                     
+
+            </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
@@ -450,7 +487,8 @@
 			</form>
         </div>
     </div>
-</div>
+</div> -->
+
 
                                         
 										<!--end: Datatable-->
@@ -462,8 +500,6 @@
 						</div>
 						<!--begin::Content Wrapper-->
 					</div>
-                </div> <!-- end container -->
-            </div> <!-- end flex-row -->
 
 
 @endsection

@@ -46,12 +46,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/itemfetch', [HomeController::class, 'itemfetch'])->name('itemfetch');
     Route::post('/edititem', [HomeController::class, 'edititem'])->name('edititem');
     Route::get('/createbill', [HomeController::class, 'createbill'])->name('createbill');
+    Route::get('/franchiseshops', [ShopNameController::class, 'index'])->name('franchiseshops');
+    Route::post('/createfranchiseshops', [ShopNameController::class, 'createfranchiseshops'])->name('createfranchiseshops');
 
+    
 
     Route::get('/brandlist', [HomeController::class, 'brandlist'])->name('brandlist');
     Route::post('/createbrand', [HomeController::class, 'createbrand'])->name('createbrand');
     Route::get('/materials', [HomeController::class, 'materiallist'])->name('materials');
     Route::post('/materialfetch', [HomeController::class, 'materialfetch'])->name('materialfetch');
+     Route::post('/matrialadd', [HomeController::class, 'matrialadd'])->name('matrialadd');
     
     Route::post('/generatebill', [HomeController::class, 'generatebill'])->name('generatebill');
      Route::post('/editmaterials', [HomeController::class, 'editmaterials'])->name('editmaterials');
