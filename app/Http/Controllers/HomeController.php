@@ -186,7 +186,7 @@ public function createshop(Request $request)
        
         
 
-        return redirect()->back()->with('success', 'Shop created successfully!');
+        return redirect('shop')->with('success', 'Shop created successfully!');
 
 
         

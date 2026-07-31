@@ -246,7 +246,7 @@
                                                             Shops <span class="text-danger">*</span>
                                                         </label>
 
-                                                       <select class="form-control" name="shop_id" required>
+                                                       <select class="form-control " name="shop_id" required>
                                                             <option value="">Select Shop</option>
                                                             @foreach($brand as $shopbrand)
                                                        <option value="{{ $shopbrand->id }}">
@@ -262,7 +262,7 @@
                                                            Items  <span class="text-danger">*</span>
                                                         </label>
 
-                                                    <select class="form-control" name="item_id" required>
+                                                    <select class="form-control selectitems" name="item_id" required>
                                                             <option value="">Select Item</option>
                                                             @foreach($items as $item)
                                                        <option value="{{ $item->id }}">
@@ -278,7 +278,7 @@
 			<div class="form-group">
 														<label>Selling Rate
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="sr" placeholder="create menu" required /></div>
+														<input type="text" class="form-control" id="sellingrate" name="sr" placeholder="create menu"  readonly required /></div>
 										
 														 <div class="form-group">
 														<label>Special Rate
@@ -288,7 +288,7 @@
 														<div class="form-group">
 														<label>BGF %
 														<span class="text-danger">*</span></label>
-														<input type="text" class="form-control" name="commission" placeholder="create menu" required /></div>
+														<input type="text" class="form-control" id="commission" name="commission" placeholder="create menu"  readonly required /></div>
 										
 
             <div class="modal-footer">
@@ -376,11 +376,11 @@
     @foreach($menus as $menu)
 <tr>
   <th scope="row">{{$i}}</th>
-  <td>{{ $menu->shop->name ?? '-' }}</td>
-  <td>{{ $menu->item->item_name ?? '-' }}</td>
-  <td>{{ $menu->rate}}</td>
+  <td>{{ $menu->brand_name ?? '-' }}</td>
+  <td>{{ $menu->item_name ?? '-' }}</td>
+  <td>{{ $menu->offer_price}}</td>
   <td>{{ $menu->special_rate}}</td>
-  <td>{{ $menu->commission}}</td>
+  <td>{{ $menu->bgf}}</td>
   <td>
     <button type="button" class="btn btn-sm btn-primary editmenus" data-id="{{$menu->id}}">Edit</button>
   </td>
@@ -411,20 +411,16 @@
 
                                                 @csrf
                
-                                            <div class="form-group">
-                                                 <label>Create Menu <span class="text-danger">*</span></label>
-                                                 <input type="hidden" id="menu_keyid" name="keyid">
-                                                 <input type="text" class="form-control" id="create_menu" name="create_menu" placeholder="edit menu" required />
-                                            </div>
+                                         
 
 
 											<div class="form-group">
 												<label>Shops <span class="text-danger">*</span></label>
 												<select class="form-control" id="shop_id" name="shop_id" required>
 													<option value="">Select Shop</option>
-													@foreach($shops as $shop)
+													@foreach($brand as $shop)
 													<option value="{{ $shop->id }}"
-													{{ isset($menu) && $menu->shop_id == $shop->id ? 'selected' : '' }}>{{ $shop->name }}
+													{{ isset($menu) && $menu->shop_id == $shop->id ? 'selected' : '' }}>{{ $shop->brand_name }}
 												</option>
 												@endforeach
 											</select>
@@ -440,6 +436,12 @@
 										@endforeach    
 									</select>
 								</div>
+
+								   <div class="form-group">
+                                                 <label>Sellingrae<span class="text-danger">*</span></label>
+                                                 <input type="hidden" id="menu_keyid" name="keyid">
+                                                 <input type="text" class="form-control" id="create_menu" name="specialrate" placeholder="edit menu" required />
+                                            </div>
 
 								</div>
 

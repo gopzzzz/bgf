@@ -68,6 +68,8 @@
 </script>
 
 
+
+
 <script>
 $(document).on('click', '.editmaterials', function () {
 
@@ -102,7 +104,6 @@ $(document).on('click', '.editmaterials', function () {
 </script>
 
 
-<<<<<<< HEAD
 
 <script>
     $(document).on('click', '.editshopname', function () {
@@ -131,6 +132,32 @@ $(document).on('click', '.editmaterials', function () {
     });
 </script>
 
+<script>
+    $(document).on('change', '.selectitems', function () {
+               var id = $(this).val();
+              
+        
+    if(id){
+      $.ajax({
+					type: "POST",
+                    url: "{{route('itemfetch')}}",
+					data: {  "_token": "{{ csrf_token() }}",
+					id: id },
+					success: function (res) {
+					console.log(res);
+          var obj=JSON.parse(res)
+		 
+          $('#sellingrate').val(obj.normal_price);
+		  $('#commission').val(obj.bgf);
+		 
+		//   $('#keyid').val(id);
+					},
+					});	
+		}
+ 
+        // $('#edit_cat_modal').modal('show');
+    });
+</script>
 
 
 
@@ -148,7 +175,7 @@ $(document).on('click', '.editmaterials', function () {
 					console.log(res);
           var obj=JSON.parse(res)
 		 
-          $('#create_menu').val(obj.create_menu);
+          $('#create_menu').val(obj.special_rate);
 		  $('#shop_id').val(obj.shop_id);
 		  $('#item_id').val(obj.item_id);
 		  $('#menu_keyid').val(id);
@@ -162,8 +189,6 @@ $(document).on('click', '.editmaterials', function () {
 
 
 
-=======
->>>>>>> f8518588c0b50b37ba850b18f2624212e1e6d896
 <script>
     $(document).on('click', '.editstaff', function () {
         var id = $(this).attr('data-id'); // 🔥 safest

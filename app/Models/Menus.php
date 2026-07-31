@@ -14,9 +14,8 @@ class Menus extends Model
         
         'item_id',
         'shop_id',
-        'rate',
         'special_rate',
-        'commission'
+        
     ];
 
    
