@@ -88,6 +88,7 @@ public function createitem(Request $request) {
         $item->normal_price = $request->normal_price;
         $item->offer_price  = $request->offer_price;
         $item->category_id  = $request->category_id;
+        $item->bgf          =$request->commission;
 
         $item->save();
 
@@ -491,6 +492,7 @@ public function edititem(Request $request){
        $item->normal_price = $request->normal_price;
        $item->offer_price  = $request->offer_price;
        $item->category_id  = $request->category_id;
+       $item->bgf          =$request->commission;
        $item->save();
 return redirect()->back()->with('success', 'Data edited successfully!');
    } catch (\Exception $e) {
@@ -502,7 +504,15 @@ public function addshops(){
     return view('addshops');
 }
 public function createbill(){
-     return view('createbill');
+     $items=DB::table('menus')
+      ->join('items', 'menus.item_id', '=', 'items.id')
+      ->join('tbl_shopbrands', 'menus.shop_id', '=', 'tbl_shopbrands.id')
+    ->select(
+        'menus.*',
+        'items.offer_price','items.bgf','items.item_name','tbl_shopbrands.brand_name'
+    )
+     ->get();
+     return view('createbill',compact('items'));
 }
 public function generatebill(Request $request){
  return view('generatebill');
@@ -578,6 +588,8 @@ public function editmaterials(Request $request){
             ->with('error', 'Something went wrong. Please try again.');
     }
 }
-
+public function saleswindow(Request $request){
+  return view ('saleswindow');
+}
 }
 

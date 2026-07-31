@@ -284,7 +284,7 @@
     @foreach($reports as $key)
     <tr>
       <th scope="row">{{$i}}</th>
-      <td>{{$key->Customer_name}}</td>
+      <td>{{$key->customer_name}}</td>
        <td>{{$key->customer_phonenumber}}</td>
        <td>{{$key->total_mrp}}</td>
        <td>{{$key->discount}}</td>

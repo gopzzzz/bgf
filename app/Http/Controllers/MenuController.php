@@ -30,14 +30,24 @@ class MenuController extends Controller
         return view('menus', compact('menus','brand','items'));
     }
 
-      public function store(Request $request)
+    
+public function store(Request $request)
 {
     $request->validate([
-        'item_id'       => 'required',
-        'shop_id'       => 'required',
-        
+        'item_id'      => 'required',
+        'shop_id'      => 'required',
         'specialrate'  => 'nullable|numeric',
     ]);
+
+    // Check for duplicate combination
+    $exists = Menus::where('item_id', $request->item_id)
+        ->where('shop_id', $request->shop_id)
+        ->exists();
+
+    if ($exists) {
+        return redirect()->back()->with('error', 'his item is already added for the selected shop.');
+          
+    }
 
     $menu = new Menus();
     $menu->item_id = $request->item_id;
@@ -47,6 +57,7 @@ class MenuController extends Controller
 
     return redirect()->back()->with('success', 'Record saved successfully.');
 }
+
 
 public function show(Request $request){
 $id=$request->id;

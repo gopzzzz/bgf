@@ -261,6 +261,8 @@
 														
 													</div>
 
+
+
                                                     <div class="form-group">
 														    <label>
 																        Category <span class="text-danger">*</span>
@@ -275,6 +277,13 @@
 																															    @endforeach
 																															</select>
 																														</div>
+
+																														   <div class="form-group">
+														<label>Commission %
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" name="commission" placeholder="Enter Commission Percentage" required />
+														
+													</div>
 
 
 
@@ -444,6 +453,13 @@
 												@endforeach
 											</select>
 										</div>
+
+										  <div class="form-group">
+														<label>Commission %
+														<span class="text-danger">*</span></label>
+														<input type="text" class="form-control" id="commission" name="commission" placeholder="Enter offer" required />
+														
+													</div>
 
 										</div>
 

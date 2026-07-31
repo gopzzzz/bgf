@@ -147,7 +147,7 @@ $(document).on('click', '.editmaterials', function () {
 					console.log(res);
           var obj=JSON.parse(res)
 		 
-          $('#sellingrate').val(obj.normal_price);
+          $('#sellingrate').val(obj.offer_price);
 		  $('#commission').val(obj.bgf);
 		 
 		//   $('#keyid').val(id);
@@ -238,6 +238,7 @@ $(document).on('click', '.editmaterials', function () {
 		  $('#normal_price').val(obj.normal_price);
 		  $('#offer_price').val(obj.offer_price);
 		  $('#category_id').val(obj.category_id);
+          $('#commission').val(obj.bgf);
 
 		  
 		  $('#item_keyid').val(id);
@@ -294,6 +295,119 @@ $(document).ready(function () {
 
     $(document).on("click", ".removeRow", function () {
         $(this).closest("tr").remove();
+    });
+
+});
+</script>
+
+<script>
+$(function(){
+
+    let cart = [];
+
+    $('.add-to-cart').click(function(){
+
+        let id    = $(this).data('id');
+        let name  = $(this).data('name');
+        let price = parseFloat($(this).data('price'));
+
+        let found = cart.find(x => x.id == id);
+
+        if(found){
+            found.qty++;
+        }else{
+            cart.push({
+                id:id,
+                name:name,
+                price:price,
+                qty:1
+            });
+        }
+
+        drawCart();
+
+    });
+
+    function drawCart(){
+
+        let html = '';
+        let total = 0;
+
+        cart.forEach(function(item){
+
+            let amount = item.qty * item.price;
+
+            total += amount;
+
+            html += `
+            <div class="bill-item-card">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <h6 class="bill-item-title">${item.name}</h6>
+                        <input type="hidden" name="itemid" value="${item.id}">
+                        <input type="hidden" qty="qty" value="${item.qty}">
+                        <input type="hidden" qty="qty" value="${item.price}">
+
+                        <small>₹${item.price} × ${item.qty}</small>
+
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-3">
+
+                    <div class="qty-control">
+
+                        <button class="qty-btn minus" data-id="${item.id}">−</button>
+
+                        <span>${item.qty}</span>
+
+                        <button class="qty-btn plus" data-id="${item.id}">+</button>
+
+                    </div>
+
+
+                </div>
+
+            </div>`;
+        });
+
+        $('#cartItems').html(html);
+
+        $('#grandTotal').html('₹'+total.toFixed(2));
+        
+
+    }
+
+    $(document).on('click','.plus',function(){
+
+        let id=$(this).data('id');
+
+        cart.find(x=>x.id==id).qty++;
+
+        drawCart();
+
+    });
+
+    $(document).on('click','.minus',function(){
+
+        let id=$(this).data('id');
+
+        let item=cart.find(x=>x.id==id);
+
+        item.qty--;
+
+        if(item.qty<=0){
+
+            cart=cart.filter(x=>x.id!=id);
+
+        }
+
+        drawCart();
+
     });
 
 });
