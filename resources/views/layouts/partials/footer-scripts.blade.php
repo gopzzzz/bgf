@@ -10,10 +10,7 @@
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 		<!--end::Global Theme Bundle-->
 		<!--begin::Page Vendors(used by this page)-->
-		<script src="{{asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"></script>
-		<!--end::Page Vendors-->
-		<!--begin::Page Scripts(used by this page)-->
-		<script src="{{asset('assets/js/pages/widgets.js')}}"></script>
+	
 
 	
 		<!--end::Page Scripts-->
@@ -250,7 +247,7 @@ $(document).on('click', '.editmaterials', function () {
 </script>
 
 
-@if(isset($materials))
+
 <script>
 $(document).ready(function () {
 
@@ -347,9 +344,9 @@ $(function(){
                     <div>
 
                         <h6 class="bill-item-title">${item.name}</h6>
-                        <input type="hidden" name="itemid" value="${item.id}">
-                        <input type="hidden" qty="qty" value="${item.qty}">
-                        <input type="hidden" qty="qty" value="${item.price}">
+                        <input type="hidden" name="itemid[]" value="${item.id}">
+                        <input type="hidden" name="qty[]" value="${item.qty}">
+                        <input type="hidden" name="price[]" value="${item.price}">
 
                         <small>₹${item.price} × ${item.qty}</small>
 
@@ -378,6 +375,7 @@ $(function(){
         $('#cartItems').html(html);
 
         $('#grandTotal').html('₹'+total.toFixed(2));
+          $('#total_amount').val(total.toFixed(2));
         
 
     }
@@ -412,4 +410,28 @@ $(function(){
 
 });
 </script>
-@endif
+
+
+<script>
+$(document).on('keyup change','.qty',function(){
+
+    let qty=$(this).val();
+    let rate=$(this).data('rate');
+
+    let total=qty*rate;
+
+    $(this).closest('tr').find('.lineTotal').html('₹'+total.toFixed(2));
+
+    let grand=0;
+
+    $('.lineTotal').each(function(){
+
+        grand+=parseFloat($(this).text().replace('₹',''));
+
+    });
+
+    $('#grandTotal').html('₹'+grand.toFixed(2));
+
+});
+</script>
+

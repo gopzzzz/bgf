@@ -588,8 +588,62 @@ public function editmaterials(Request $request){
             ->with('error', 'Something went wrong. Please try again.');
     }
 }
-public function saleswindow(Request $request){
-  return view ('saleswindow');
+public function saleswindow(Request $request)
+{
+    $billId = DB::table('order_masters')->insertGetId([
+        'total_mrp'      => 0,
+        'discount'       => 0,
+        'payment_method' => 0,
+        'sales_man'      => 0,
+        'total_amount'   => 0,
+        'created_at'     => now(),
+        'updated_at'     => now(),
+    ]);
+
+    foreach ($request->itemid as $index => $itemId) {
+
+        DB::table('order_trans')->insert([
+            'master_id'       => $billId,
+            'item_id'         => $itemId,
+            'qty'             => $request->qty[$index],
+            'rate'            => $request->price[$index],
+            'total_amount'    => $request->qty[$index] * $request->price[$index],
+            'taxable_amount'  => 0,
+            'created_at'      => now(),
+            'updated_at'      => now(),
+        ]);
+    }
+
+    // echo $billId;exit;
+
+    $master = DB::table('order_masters')->where('id', $billId)->first();
+
+    $items = DB::table('order_trans')
+        ->join('items', 'items.id', '=', 'order_trans.item_id')
+        ->where('master_id', $billId)
+        ->select(
+            'order_trans.*',
+            'items.item_name'
+        )
+        ->get();
+
+        return redirect()->route('saleswindow.show', $billId);
+
+    // return view('saleswindow',compact('master','items'));
+    
+}
+
+public function showSalesWindow($id)
+{
+    $master = DB::table('order_masters')->where('id', $id)->first();
+
+    $items = DB::table('order_trans')
+        ->join('items', 'items.id', '=', 'order_trans.item_id')
+        ->where('master_id', $id)
+        ->select('order_trans.*', 'items.item_name')
+        ->get();
+
+    return view('saleswindow', compact('master', 'items'));
 }
 }
 

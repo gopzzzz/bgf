@@ -595,7 +595,6 @@
 
                                     <div class="bill-items" id="cartItems">
 
-                                     
 
                                     
 
@@ -605,6 +604,7 @@
 
                                     <!-- TOTAL -->
                                     <h5 class="mb-3">Total : <span id="grandTotal">0</span></h5>
+                                    <input type="hidden" name="grandtotal" id="total_amount">
 									
 
                                     <!-- PAY BUTTON -->

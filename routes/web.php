@@ -62,6 +62,8 @@ Route::middleware('auth')->group(function () {
      Route::post('/matrialadd', [HomeController::class, 'matrialadd'])->name('matrialadd');
     
     Route::post('/generatebill', [HomeController::class, 'saleswindow'])->name('generatebill'); 
+    Route::get('/saleswindow/{id}', [HomeController::class, 'showSalesWindow'])
+    ->name('saleswindow.show');
      Route::post('/editmaterials', [HomeController::class, 'editmaterials'])->name('editmaterials');
        
     

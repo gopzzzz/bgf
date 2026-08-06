@@ -119,16 +119,7 @@
 							<!--end::Subheader-->
 							<div class="content flex-column-fluid" id="kt_content">
 								<!--begin::Notice-->
-								@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-	@if(session('error'))
- <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+							
 								<!--end::Notice-->
 								<!--begin::Card-->
 								<div class="card card-custom">
@@ -140,49 +131,91 @@
 										
 									</div>
 									<div class="card-body">
-										<!--begin: Search Form-->
-										<!--begin::Search Form-->
-										
-										<!--end::Search Form-->
-										<!--end: Search Form-->
-										<!--begin: Datatable-->
-	
+										<div class="row mb-3">
 
-                                        <div class="card-body">
-										<!--begin: Search Form-->
-										<!--begin::Search Form-->
-										
-										<!--end::Search Form-->
-										<!--end: Search Form-->
-
-   
-
-	@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <div class="col-md-4">
+        <label class="form-label">Customer Name</label>
+        <input type="text"
+               name="customer_name"
+               class="form-control"
+               placeholder="Enter Customer Name">
     </div>
-@endif
 
-    <form method="POST" action="{{ route('shop.create') }}" enctype="multipart/form-data">
-        @csrf
+    <div class="col-md-4">
+        <label class="form-label">Phone Number</label>
+        <input type="text"
+               name="customer_phone"
+               class="form-control"
+               maxlength="10"
+               placeholder="Enter Phone Number">
+    </div>
 
-        <div class="modal-body">
+    <div class="col-md-4">
+        <label class="form-label">Email Address</label>
+        <input type="email"
+               name="customer_email"
+               class="form-control"
+               placeholder="Enter Email Address">
+    </div>
 
-        
+</div>
 
-        <div class="modal-footer">
-            <button type="button" class="btn btn-light-primary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-    </form>
+				
+                                     <h3>Invoice #{{ $master->id }}</h3>
 
-									
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Rate</th>
+            <th>Total</th>
+        </tr>
+    </thead>
 
+    <tbody>
+        @foreach($items as $item)
+        <tr>
+            <td>{{ $item->item_name }}</td>
+           <td width="120">
+    <input type="number"
+           class="form-control qty"
+           data-rate="{{ $item->rate }}"
+           data-id="{{ $item->id }}"
+           value="{{ $item->qty }}"
+           min="1">
+</td>
+            <td>₹{{ number_format($item->rate, 2) }}</td>
+            <td class="lineTotal">
+    ₹{{ number_format($item->total_amount,2) }}
+</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
+<h4 class="text-end">
+Grand Total :
+<span id="grandTotal">
+₹{{ number_format($master->total_amount,2) }}
+</span>
+</h4>
+
+<div class="d-flex justify-content-end mt-4">
+
+    <button type="button" class="btn btn-warning mr-2" onclick="history.back()">
+        <i class="fa fa-edit"></i> Edit Bill
+    </button>
+
+    <button type="button" class="btn btn-success mr-2" onclick="window.print()">
+        <i class="fa fa-print"></i> Print Bill
+    </button>
+
+    <a href="#" class="btn btn-primary">
+        <i class="fa fa-plus"></i> New Sale
+    </a>
+
+</div>
                   
 
 
@@ -205,4 +238,5 @@
 					</div>
 
 
+					
 @endsection
